@@ -3,4 +3,33 @@
 .form {
   width: 100%;
   max-width: 600px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.form-light {
+  background-color: white;
+  box-shadow: 0px 2px 15px rgba(black, 0.10);
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5em 0;
+}
+
+.form-subtitle {
+  font-size: 1.5rem;
+  color: $grey2;
+}
+
+.form-subtitle.mt-large {
+  margin-top: 3em;
+}
+
+.form-title {
+  color: $grey1;
+  text-align: center;
 }

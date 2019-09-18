@@ -1,0 +1,18 @@
+@import '../../colours';
+
+.form-input {
+  background-color: rgb(247, 247, 247);
+  border: none;
+  border-radius: 3px;
+  width: 100%;
+  padding: 1em 1em;
+  font-size: 0.8rem;
+  color: $grey2;
+}
+
+.form-label {
+  font-weight: 500;
+  color: $grey4;
+  margin-bottom: 0.3em;
+  font-size: 1rem;
+}

@@ -1,0 +1,14 @@
+@import '../../colours';
+
+.btn {
+  width: 206px;
+  height: 52px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: $green4;
+  color: white;
+}
