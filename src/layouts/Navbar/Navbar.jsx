@@ -6,38 +6,45 @@ const Navbar = () => {
   return (
     <nav className="navbar-wrapper">
       <ul>
-        <li>
-          <NavLink>
+        <li className="navbar-item" >
+          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/">
             Home
           </NavLink>
         </li>
 
-        <li>
-          <NavLink>
+        <li className="navbar-item" >
+          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="#">
             What is Prestigious?
           </NavLink>
         </li>
 
-        <li>
-          <NavLink>
+        <li className="navbar-item" >
+          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="#">
             Jobs
           </NavLink>
         </li>
 
-        <li>
-          <NavLink>
+        <li className="navbar-item" >
+          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="#">
             Discover
           </NavLink>
         </li>
 
-        <li>
-          <NavLink to="/signup?r=writer">
+        <li className="navbar-item" >
+          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/signup">
             Sign Up
           </NavLink>
         </li>
       </ul>
     </nav>
   )
+}
+const activeRouterHandler = (match, location) => {
+  if (!match) {
+    return false
+  }
+  
+  return true;
 }
 
 export default Navbar

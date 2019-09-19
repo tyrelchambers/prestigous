@@ -1,5 +1,26 @@
+@import '../../colours';
+
 .navbar-wrapper {
   ul {
     display: flex;
   }
+}
+
+.navbar-item {
+  margin: 1em;
+
+  a {
+    color: $grey3;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+    &:hover {
+      color: $grey6;
+      opacity: 1;
+    }
+  }
+}
+
+.active-nav-item {
+  color: $grey2 !important;
+  opacity: 1 !important;
 }

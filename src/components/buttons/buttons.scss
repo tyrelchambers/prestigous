@@ -1,11 +1,12 @@
 @import '../../colours';
 
 .btn {
-  width: 206px;
+  min-width: 206px;
   height: 52px;
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
+  border: none;
 }
 
 .btn-primary {

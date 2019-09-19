@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { Provider } from 'mobx-react';
 import './globals.scss';
 import Home from './pages/Home/Home';
+import CreateProfile from './pages/CreateProfile/CreateProfile';
 import Signup from './pages/Signup/Signup';
 
 ReactDOM.render(
@@ -14,7 +15,8 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/signup" component={Signup} />
+        <Route path="/create_profile" component={CreateProfile} />
+        <Route exact path="/signup" component={Signup} />
       </Switch>
     </Router>
   </Provider>, document.getElementById('root'));

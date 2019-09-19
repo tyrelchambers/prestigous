@@ -1,0 +1,60 @@
+@import '../../colours';
+
+.role-select-wrapper {
+  height: 600px;
+  position: relative;
+  transition: all 0.2s ease;
+  
+  &[data-role="writer"] {
+    background: linear-gradient(45deg, rgba(16,42,67,1) 0%, rgba(255,121,121,1) 100%);
+  }
+
+  &[data-role="narrator"] {
+    background: linear-gradient(45deg, rgba(16,42,67,1) 0%, rgba(81,199,114,1) 100%);
+  }
+}
+
+.particles {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+.role-select {
+  position: absolute;
+  top: 4em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  a {
+    padding: 0.5em 1.5em;
+    font-size: 1.5rem;
+    color: white;
+    opacity: 0.3;
+
+    &:first-child {
+      margin-right: 1em;
+    }
+  }
+
+  > h1 {
+    color: white;
+  }
+}
+
+.role-select-active {
+  opacity: 1 !important;
+  background-color: white;
+  color: $grey1 !important;
+  border-radius: 60px;
+  box-shadow: 0px 2px 15px rgba(black, 0.2);
+}
