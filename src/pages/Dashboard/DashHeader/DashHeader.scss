@@ -1,0 +1,51 @@
+@import '../../../colours';
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.dashboard-header-avatar {
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.dashboard-header-stats {
+  margin-bottom: 3em;
+  li {
+    margin: 1em;
+  }
+
+  h4 {
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: $grey6;
+
+  }
+
+  p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $grey2;
+
+  }
+}
+
+.dashboard-header-actions {
+  li {
+    margin: 0 1em;
+  }
+}
+
+.dashboard-title {
+  color: $grey2;
+}
+
+.dashboard-subtitle {
+  color: $grey6;
+}

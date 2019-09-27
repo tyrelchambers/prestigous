@@ -2,6 +2,7 @@ import React from 'react'
 import './forms.scss'
 import { MainInput } from '../inputs/Inputs'
 import { SubmitButton } from '../buttons/Buttons'
+import deleteParams from '../../helpers/deleteParams'
 
 const WriterForm = ({classNames, style}) => {
   return (
@@ -85,11 +86,17 @@ const WriterForm = ({classNames, style}) => {
       <div className="d-f jc-c">
         <SubmitButton
           text="Get Started"
-          icon={<i className="fas fa-check-circle ml+"></i>}
+          icon={<i className="fas fa-check-circle mr+"></i>}
+          onClick={submitHandler}
         />
       </div>
     </form>
   )
 }
 
+const submitHandler = (e) => {
+  e.preventDefault();
+  const url = window.location.href;
+  deleteParams(url, "/dashboard", "r");
+}
 export default WriterForm

@@ -32,3 +32,16 @@ a {
   color: $grey2;
   text-align: center;
 }
+
+.container {
+  max-width: 1300px;
+  width: 100%;
+}
+
+.hr {
+  width: 100%;
+  border: none;
+  height: 1px;
+  margin: 2em 0 ;
+  background-color: $grey9;
+}
