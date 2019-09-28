@@ -36,7 +36,7 @@ const SignupForm = ({classNames}) => {
       <div className="d-f jc-c">
         <SubmitButton
           text="Become Prestigious"
-          icon={<i className="fas fa-crown mr-"></i>}
+          icon={<i className="fas fa-crown ml-"></i>}
           onClick={submitHandler}
         />
       </div>

@@ -88,7 +88,7 @@ const NarratorForm = ({classNames, style}) => {
       <div className="d-f jc-c">
         <SubmitButton
           text="Get Started"
-          icon={<i className="fas fa-check-circle ml+"></i>}
+          icon={<i className="fas fa-check-circle ml-"></i>}
         />
       </div>
     </FormWrapper>
