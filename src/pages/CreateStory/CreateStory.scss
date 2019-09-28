@@ -1,0 +1,14 @@
+@import '../../colours';
+
+#editor {
+  min-height: 800px;
+  height: 100%;
+  background-color: rgb(247, 247, 247);
+  border-radius: 5px;
+}
+
+.create-story-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
