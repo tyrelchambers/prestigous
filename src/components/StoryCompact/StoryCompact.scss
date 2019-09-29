@@ -1,0 +1,61 @@
+@import '../../colours';
+
+.story-compact-wrapper {
+  display: inline-flex;
+  padding: 1em;
+  margin: 1em;
+  margin-top: 2em;
+  width: calc(100% / 5);
+  &:hover .story-compact-body {
+    box-shadow: 0px 2px 15px rgba($green7, 0.7);
+  }
+}
+
+.story-compact-body {
+  position: relative;
+  background-color: $off-white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 15px rgba(black, 0.1);
+  width: 200px;
+  height: 200px;
+  transition: all 0.2s ease;
+
+}
+
+.story-compact-main {
+  margin: 2em;
+  text-align: center;
+  p {
+    font-size: 0.8rem;
+  }
+
+  .title {
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.story-compact-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgb(16,42,67);
+  background: linear-gradient(45deg, rgba(16,42,67,1) 0%, rgba(66,108,196,1) 100%);
+  box-shadow: 0px 2px 15px rgba(black, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid white;
+  position: absolute;
+  top: -35px;
+  left: -35px;
+ 
+  i {
+    color: white;
+    font-size: 1.8rem;
+    margin-right: -3px;
+  }
+}

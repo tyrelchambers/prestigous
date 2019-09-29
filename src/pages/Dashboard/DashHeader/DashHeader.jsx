@@ -1,7 +1,6 @@
 import React from 'react'
 import './DashHeader.scss'
 import '../Dashboard.scss'
-import { DashButton } from '../../../components/buttons/Buttons';
 import {Link} from 'react-router-dom'
 const avatar = require('../../../assets/images/jack-finnigan-rriAI0nhcbc-unsplash.jpg');
 
@@ -52,7 +51,6 @@ const DashHeader = () => {
           </Link>
         </li>
       </ul>
-      <hr className="hr"/>
     </div>
   )
 }

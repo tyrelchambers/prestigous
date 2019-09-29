@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import FormWrapper from './FormWrapper'
 import { MainInput } from '../inputs/Inputs'
 import ReactQuill from 'react-quill';
@@ -26,7 +26,7 @@ const CreateStoryForm = () => {
         </div>
       </div>
 
-      <h3 className="mt+ subtitle thin">Story Details</h3>
+      <h3 className="mt+ subtitle ta-c thin">Story Details</h3>
       <div className="field-group">
         <label htmlFor="title" className="form-label">Title</label>
         <MainInput
@@ -43,7 +43,7 @@ const CreateStoryForm = () => {
         />
       </div>
 
-      <h3 className="mt+ subtitle thin">Meta Details</h3>
+      <h3 className="mt+ subtitle ta-c thin">Meta Details</h3>
 
       <div className="field-group">
         <label htmlFor="theme" className="form-label">General Theme</label>
