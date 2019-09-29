@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import * as serviceWorker from './serviceWorker';
 import LogRocket from 'logrocket';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
@@ -10,6 +9,7 @@ import Home from './pages/Home/Home';
 import CreateProfile from './pages/CreateProfile/CreateProfile';
 import Signup from './pages/Signup/Signup';
 import Writer from './pages/Dashboard/Writer/Writer';
+import CreateStory from './pages/CreateStory/CreateStory';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   let token = window.localStorage.getItem('token');
@@ -42,6 +42,7 @@ ReactDOM.render(
         <Route path="/create_profile" component={CreateProfile} />
         <Route exact path="/signup" component={Signup} />
         <PrivateRoute path="/dashboard" component={Writer}/>
+        <PrivateRoute path="/story/create" component={CreateStory} />
       </Switch>
     </Router>
   </Provider>, document.getElementById('root'));

@@ -2,6 +2,7 @@ import React from 'react'
 import './DashHeader.scss'
 import '../Dashboard.scss'
 import { DashButton } from '../../../components/buttons/Buttons';
+import {Link} from 'react-router-dom'
 const avatar = require('../../../assets/images/jack-finnigan-rriAI0nhcbc-unsplash.jpg');
 
 const DashHeader = () => {
@@ -9,8 +10,8 @@ const DashHeader = () => {
     <div className="dashboard-header center">
       <img src={avatar} alt="" className="dashboard-header-avatar"/>  
 
-      <h2 className="dashboard-title mb---">imtyrelchambers</h2>    
-      <p className="dashboard-subtitle">Tyrel Chambers</p>
+      <h2 className="dashboard-title mb-">imtyrelchambers</h2>    
+      <p className="dashboard-subtitle ">Tyrel Chambers</p>
 
       <ul className="d-f jc-sb dashboard-header-stats">
         <li>
@@ -31,24 +32,24 @@ const DashHeader = () => {
 
       <ul className="d-f jc-sb dashboard-header-actions">
         <li>
-          <DashButton
-            text="Send a message"
-            icon={<i className="fas fa-comment-alt mr-"></i>}
-          />
+          <Link to="#" className="btn btn-secondary">
+            <i className="fas fa-comment-alt mr-"></i>
+            Send a message
+          </Link>
         </li>
 
         <li>
-          <DashButton
-            text="Edit your profile"
-            icon={<i className="fas fa-user-circle mr-"></i>}
-          />
+          <Link to="#" className="btn btn-secondary">
+            <i className="fas fa-user-circle mr-"></i>
+            Edit your profile
+          </Link>
         </li>
 
         <li>
-          <DashButton
-            text="Create a story"
-            icon={<i className="fas fa-user-edit mr-"></i>}
-          />
+          <Link to="/story/create" className="btn btn-secondary">
+            <i className="fas fa-user-edit mr-"></i>
+            Create a story
+          </Link>
         </li>
       </ul>
       <hr className="hr"/>

@@ -3,10 +3,14 @@ import './forms.scss'
 import { MainInput } from '../inputs/Inputs'
 import { SubmitButton } from '../buttons/Buttons'
 import deleteParams from '../../helpers/deleteParams'
+import FormWrapper from './FormWrapper'
 
 const WriterForm = ({classNames, style}) => {
   return (
-    <form className={`form ${classNames}`} style={style}>
+    <FormWrapper
+      classNames={classNames}
+      style={style}
+    >
       <h1 className="form-title">Create A Basic Profile</h1>
 
       <h3 className="form-subtitle">The Basics</h3>
@@ -86,11 +90,11 @@ const WriterForm = ({classNames, style}) => {
       <div className="d-f jc-c">
         <SubmitButton
           text="Get Started"
-          icon={<i className="fas fa-check-circle mr+"></i>}
+          icon={<i className="fas fa-check-circle ml-"></i>}
           onClick={submitHandler}
         />
       </div>
-    </form>
+    </FormWrapper>
   )
 }
 
