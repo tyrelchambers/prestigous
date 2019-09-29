@@ -5,6 +5,9 @@
   height: 100%;
   background-color: rgb(247, 247, 247);
   border-radius: 5px;
+  * {
+    color: $grey3;
+  }
 }
 
 .create-story-wrapper {

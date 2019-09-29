@@ -8,6 +8,11 @@ const CreateStoryForm = () => {
  
   const fullName = "Tyrel Chambers";
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    window.location.href = "/dashboard";
+  }
+
   return (
     <FormWrapper classNames="form-wide">
       <div className="field-group">
@@ -66,13 +71,15 @@ const CreateStoryForm = () => {
 
       <div className="d-f jc-c mt+">
         <SubmitButton
-          icon={<i className="fas fa-check ml-"></i>}
+          icon={<i className="fas fa-check mr-"></i>}
           text="Submit Story"
+          onClick={submitHandler}
         />
       </div>
     </FormWrapper>
   )
 }
+
 
 
 export default CreateStoryForm
