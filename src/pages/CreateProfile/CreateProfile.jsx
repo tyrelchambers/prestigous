@@ -31,9 +31,12 @@ const CreateProfile = (props) => {
   );
 
   return (
-    <DisplayWrapper style={{
-      position: "relative"
-    }}>
+    <DisplayWrapper 
+      header={true}
+      style={{
+        position: "relative"
+      }}
+    >
       <div className="role-select-wrapper" data-role={isWriter ? "writer" : "narrator"}>
         <ParticlesBG
           className="particles"

@@ -10,6 +10,7 @@ import CreateProfile from './pages/CreateProfile/CreateProfile';
 import Signup from './pages/Signup/Signup';
 import Writer from './pages/Dashboard/Writer/Writer';
 import CreateStory from './pages/CreateStory/CreateStory';
+import DashIndex from './pages/Dashboard/DashIndex/DashIndex';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   let token = window.localStorage.getItem('token');
@@ -41,7 +42,7 @@ ReactDOM.render(
         <Route exact path="/" component={Home} />
         <Route path="/create_profile" component={CreateProfile} />
         <Route exact path="/signup" component={Signup} />
-        <PrivateRoute path="/dashboard" component={Writer}/>
+        <PrivateRoute path="/dashboard" component={DashIndex}/>
         <PrivateRoute path="/story/create" component={CreateStory} />
       </Switch>
     </Router>
