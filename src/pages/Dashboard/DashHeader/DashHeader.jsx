@@ -19,13 +19,18 @@ const DashHeader = () => {
         </li>
 
         <li>
-          <h4 className="mb--">Followers</h4>
+          <h4 className="mb--">Views</h4>
           <p className="m0">1,000</p>
         </li>
 
         <li>
-          <h4 className="mb--">Followers</h4>
+          <h4 className="mb--">Subscribers</h4>
           <p className="m0">1,000</p>
+        </li>
+
+        <li>
+          <h4 className="mb--">Revenue</h4>
+          <p className="m0">$1,000</p>
         </li>
       </ul>
 

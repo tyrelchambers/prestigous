@@ -10,9 +10,6 @@ const StoryWidget = () => {
         <StoryCompact/>
         <StoryCompact/>
         <StoryCompact/>
-        <StoryCompact/>
-        <StoryCompact/>
-        <StoryCompact/>
 
       </main>
     </div>
