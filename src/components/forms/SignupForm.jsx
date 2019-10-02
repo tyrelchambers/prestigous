@@ -33,20 +33,10 @@ const SignupForm = ({classNames}) => {
         />
       </div>
 
-      <div className="d-f jc-c">
-        <SubmitButton
-          text="Become Prestigious"
-          icon={<i className="fas fa-crown mr-"></i>}
-          onClick={submitHandler}
-        />
-      </div>
+      
     </FormWrapper>    
   )
 }
 
-const submitHandler = (e) => {
-  e.preventDefault();
-  window.location.href = "/create_profile?r=writer";
-}
 
 export default SignupForm

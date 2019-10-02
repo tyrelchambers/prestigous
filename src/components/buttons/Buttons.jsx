@@ -11,3 +11,9 @@ export const DashButton = ({text, onClick, icon}) => {
     <button type="button" className="btn btn-secondary" onClick={onClick}>{icon} {text}</button>
   )
 }
+
+export const DangerButton = ({text, icon, onClick}) => {
+  return (
+    <button type="button" className="btn btn-danger" onClick={onClick}>{icon} {text}</button>
+  )
+}

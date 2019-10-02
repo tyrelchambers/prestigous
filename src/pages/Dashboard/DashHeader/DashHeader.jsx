@@ -43,7 +43,7 @@ const DashHeader = () => {
         </li>
 
         <li>
-          <Link to="#" className="btn btn-secondary">
+          <Link to="/edit_profile" className="btn btn-secondary">
             <i className="fas fa-user-circle mr-"></i>
             Edit your profile
           </Link>

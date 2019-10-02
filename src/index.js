@@ -11,6 +11,10 @@ import Signup from './pages/Signup/Signup';
 import Writer from './pages/Dashboard/Writer/Writer';
 import CreateStory from './pages/CreateStory/CreateStory';
 import DashIndex from './pages/Dashboard/DashIndex/DashIndex';
+import EditProfile from './pages/EditProfile/EditProfile';
+
+// creativesocial.app
+// prestigious.app
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   let token = window.localStorage.getItem('token');
@@ -44,6 +48,7 @@ ReactDOM.render(
         <Route exact path="/signup" component={Signup} />
         <PrivateRoute path="/dashboard" component={DashIndex}/>
         <PrivateRoute path="/story/create" component={CreateStory} />
+        <PrivateRoute path="/edit_profile" component={EditProfile}/>
       </Switch>
     </Router>
   </Provider>, document.getElementById('root'));
