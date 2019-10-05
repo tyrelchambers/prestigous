@@ -2,6 +2,8 @@ import React from 'react'
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
 import FeaturedStory from '../../layouts/FeaturedStory/FeaturedStory'
 import FeaturedUser from '../../layouts/FeaturedUser/FeaturedUser'
+import StoryFilters from '../../components/StoryFilters/StoryFilters'
+import './Home.scss'
 
 const narrator = {
   username: "Stories After Midnight",
@@ -10,7 +12,7 @@ const narrator = {
 }
 
 const story = {
-  title: "This is a story that hopefully is just long enough",
+  title: "This is a story that hopefully is just long enough yea yea yea",
   username: "imtyrelchambers",
   likes: 100,
   views: 800000,
@@ -20,21 +22,43 @@ const story = {
 const Home = () => {
   return (
     <DisplayWrapper header={true}>
-      <div className="container center">
-        <section className="d-f jc-sb">
+      <div className="">
+        <section className="d-f jc-sb container center">
           <div className="d-f fxd-c">
-            <h4 className="title">Featured Story</h4>
+            <h4 className="title ta-c">Featured Story</h4>
             <FeaturedStory story={story}/>
           </div>
           <div className="d-f fxd-c">
-            <h4 className="title">Top Rated Narrator</h4>
+            <h4 className="title ta-c">Top Rated Narrator</h4>
             <FeaturedUser user={narrator}/>
           </div>
           <div className="d-f fxd-c">
-            <h4 className="title">Top Rated Writer</h4>
+            <h4 className="title ta-c">Top Rated Writer</h4>
             <FeaturedUser user={narrator}/>
           </div>
         </section>
+
+        <div className="pr+ pt+ pl+">
+          <StoryFilters />
+        </div>
+
+        <main className="story-list-wrapper pr+ pt- pl+">
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+          <FeaturedStory story={story}/>
+        </main>
       </div>
     </DisplayWrapper>
   )
