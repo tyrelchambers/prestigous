@@ -5,10 +5,14 @@ import SignupForm from '../../components/forms/SignupForm'
 import ProfileBasicsForm from '../../components/forms/editProfileForms/ProfileBasicsForm'
 import SocialMediaForm from '../../components/forms/editProfileForms/SocialMediaForm'
 import { DashButton, DangerButton, SubmitButton } from '../../components/buttons/Buttons'
+import { Checkbox } from '../../components/inputs/Inputs'
+import DashSubnav from '../../layouts/DashSubnav/DashSubnav';
 
 const EditProfile = () => {
   return (
     <DisplayWrapper header={true}>
+            <DashSubnav />
+
       <div className="center edit-profile-wrapper  container mb+">
         <h1 className="title">Edit your profile</h1>
         <Block
@@ -25,7 +29,7 @@ const EditProfile = () => {
         <Block
           header="Discoverability"
           blurb="Edit these settings to show people whether or not you're available for hire"
-          form={""}
+          form={<Checkbox type="checkbox" name="forHire" value="forHire" text="Available for hire"/>}
         />
         <Block
           header="Account"

@@ -24,7 +24,7 @@ const Navbar = () => {
           </NavLink>
         </li>
 
-        <li className="navbar-item" >
+        <li className="navbar-item featured" >
           <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="#">
             Discover
           </NavLink>

@@ -6,7 +6,7 @@ const avatar = require('../../../assets/images/jack-finnigan-rriAI0nhcbc-unsplas
 
 const DashHeader = () => {
   return (
-    <div className="dashboard-header center">
+    <div className="dashboard-header center mt+">
       <img src={avatar} alt="" className="dashboard-header-avatar"/>  
 
       <h2 className="dashboard-title mb-">imtyrelchambers</h2>    

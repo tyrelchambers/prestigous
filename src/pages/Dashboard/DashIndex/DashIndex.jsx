@@ -5,16 +5,19 @@ import DashHeader from '../DashHeader/DashHeader';
 import DisplayWrapper from '../../../layouts/DisplayWrapper/DisplayWrapper';
 import StoryWidget from '../../../components/StoryWidget/StoryWidget';
 
-
-
-
-const DashIndex = () => {
+const DashIndex = ({profileType = "writer"}) => {
+  const template = () => {
+    if ( profileType === "writer" ) {
+      return [
+        <StoryWidget />
+      ]
+    }
+  }
   return (
     <DisplayWrapper header={true}>
       <Dashboard>
-        <DashHeader/>
         <div className="dash-index-wrapper">
-          <StoryWidget/>
+          {template()}
         </div>
       </Dashboard>
     </DisplayWrapper>

@@ -22,12 +22,9 @@ const StoryCompact = ({type, author,created_at}) => {
   return (
     <div className="story-compact-wrapper">
       <Link to="#" className="story-compact-body">
-        <div className="story-compact-icon">
-          <i className="fas fa-file-alt"></i>
-        </div>
         <main className="story-compact-main">
           <h2 className="bold title">{story.title}</h2>
-          <h4 className="subtitle">{story.author}</h4>
+          <h4 className="subtitle thin">{story.author}</h4>
           <p className="subtitle">{story.created_at}</p>
         </main>
       </Link>

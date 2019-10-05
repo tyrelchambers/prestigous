@@ -7,3 +7,11 @@ export const MainInput = ({placeholder, className="", value, onChange, type, nam
   )
 }
 
+export const Checkbox = ({type, name, value, text}) => {
+  return (
+    <div className="d-f ai-c">
+      <input type={type} value={value} name={name}/>
+      <p className="subtitle ml-">{text}</p>
+    </div>
+  )
+}

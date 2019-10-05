@@ -6,7 +6,7 @@ import { SubmitButton } from '../../components/buttons/Buttons'
 const Signup = () => {
   return (
     <DisplayWrapper header={true}>
-      <div className="d-f fxd-c ai-c">
+      <div className="d-f fxd-c ai-c p+">
         <h1 className="title">Become Prestigious</h1>
         <SignupForm />
 

@@ -6,9 +6,7 @@ import DashHeader from '../DashHeader/DashHeader'
 const Writer = () => {
   return (
     <DisplayWrapper header={true}>
-      <Dashboard>
-        <DashHeader />
-      </Dashboard>
+
     </DisplayWrapper>
   )
 }
