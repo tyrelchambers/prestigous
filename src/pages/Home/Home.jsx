@@ -3,7 +3,9 @@ import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
 import FeaturedStory from '../../layouts/FeaturedStory/FeaturedStory'
 import FeaturedUser from '../../layouts/FeaturedUser/FeaturedUser'
 import StoryFilters from '../../components/StoryFilters/StoryFilters'
+import { Link } from 'react-router-dom'
 import './Home.scss'
+import GenreList from '../../layouts/GenreList/GenreList'
 
 const narrator = {
   username: "Stories After Midnight",
@@ -22,7 +24,7 @@ const story = {
 const Home = () => {
   return (
     <DisplayWrapper header={true}>
-      <div className="">
+      <div className="p+">
         <section className="d-f jc-sb container center">
           <div className="d-f fxd-c">
             <h4 className="title ta-c">Featured Story</h4>
@@ -38,11 +40,11 @@ const Home = () => {
           </div>
         </section>
 
-        <div className="pr+ pt+ pl+">
+        <div className=" pt+ ">
           <StoryFilters />
         </div>
 
-        <main className="story-list-wrapper pr+ pt- pl+">
+        <main className="story-list-wrapper  pt- ">
           <FeaturedStory story={story}/>
           <FeaturedStory story={story}/>
           <FeaturedStory story={story}/>
@@ -59,6 +61,17 @@ const Home = () => {
           <FeaturedStory story={story}/>
           <FeaturedStory story={story}/>
         </main>
+
+        <div className="container center d-f  jc-c mt+">
+          <Link to="#">
+            Discover More
+          </Link>
+        </div>
+        <hr className="hr"/>
+        <div>
+          <h3 className="title">Or Pick A Genre</h3>
+          <GenreList />
+        </div>
       </div>
     </DisplayWrapper>
   )
