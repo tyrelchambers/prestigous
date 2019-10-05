@@ -11,10 +11,10 @@ import DashSubnav from '../../layouts/DashSubnav/DashSubnav';
 const EditProfile = () => {
   return (
     <DisplayWrapper header={true}>
-            <DashSubnav />
+      <DashSubnav />
 
       <div className="center edit-profile-wrapper  container mb+">
-        <h1 className="title">Edit your profile</h1>
+        <h1 className="title ta-c">Edit your profile</h1>
         <Block
           header="Profile Basics"
           blurb="Edit the public side of your account"
@@ -52,7 +52,9 @@ const EditProfile = () => {
           form={<DangerButton text="Delete Account" icon={<i className="fas fa-skull mr-"></i>}/>}
         />
 
-        <SubmitButton text="Save Changes" icon={<i className="fas fa-save mr-"></i>}/>
+        <div className="d-f jc-c">
+          <SubmitButton text="Save Changes" icon={<i className="fas fa-save mr-"></i>}/>
+        </div>
       </div>
     </DisplayWrapper>
   )

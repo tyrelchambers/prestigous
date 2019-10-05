@@ -1,0 +1,15 @@
+@import '../../colours.scss';
+
+.featured-block-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0px 2px 15px rgba(black, 0.2);
+  border: 5px solid white;
+}
+
+.featured-block-wrapper.no-bg {
+  background-color: transparent;
+  box-shadow: none;
+}

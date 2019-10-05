@@ -7,6 +7,7 @@
 }
 .edit-profile-wrapper {
   padding: 1em;
+  
 }
 
 .edit-block-blurb {
@@ -15,6 +16,11 @@
 
 .edit-profile-block {
   margin: 3em 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 15px rgba(black, 0.05);
+  padding: 1em;
+  border: 1px solid $grey9;
 }
 
 .edit-profile-block form {

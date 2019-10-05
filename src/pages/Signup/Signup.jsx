@@ -7,15 +7,18 @@ const Signup = () => {
   return (
     <DisplayWrapper header={true}>
       <div className="d-f fxd-c ai-c p+">
-        <h1 className="title">Become Prestigious</h1>
-        <SignupForm />
+        <div className="form-light p- w-560px">
+        <h1 className="title ta-c">Become Prestigious</h1>
 
-        <div className="d-f jc-c">
-          <SubmitButton
-            text="Become Prestigious"
-            icon={<i className="fas fa-crown mr-"></i>}
-            onClick={submitHandler}
-          />
+          <SignupForm />
+
+          <div className="d-f jc-c">
+            <SubmitButton
+              text="Become Prestigious"
+              icon={<i className="fas fa-crown mr-"></i>}
+              onClick={submitHandler}
+            />
+          </div>
         </div>
       </div>
     </DisplayWrapper>
