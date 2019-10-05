@@ -9,7 +9,7 @@ import { DashButton, DangerButton, SubmitButton } from '../../components/buttons
 const EditProfile = () => {
   return (
     <DisplayWrapper header={true}>
-      <div className="edit-profile-wrapper center container mb+">
+      <div className="center edit-profile-wrapper  container mb+">
         <h1 className="title">Edit your profile</h1>
         <Block
           header="Profile Basics"
@@ -57,7 +57,7 @@ const EditProfile = () => {
 const Block = ({header, blurb, form}) => {
   return (
     <section className="edit-profile-block">
-      <div className="d-f ">
+      <div className="d-f">
         <div className="d-f fxd-c edit-profile-col1">
           <h3 className="subtitle-underlined">{header}</h3>
           <p className="edit-block-blurb">{blurb}</p>
