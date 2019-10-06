@@ -10,7 +10,9 @@ import GenreList from '../../layouts/GenreList/GenreList'
 const narrator = {
   username: "Stories After Midnight",
   "followers": 250,
-  "avatar_url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+  "avatar_url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
+  partner: true,
+  payingMember: true
 }
 
 const story = {
