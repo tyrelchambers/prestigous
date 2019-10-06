@@ -1,1 +1,27 @@
 @import '../../colours';
+
+.notification-item {
+  border-radius: 5px;
+  width: 100%;
+  height: 60px;
+  color: white;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}
+
+.notification-item.comment {
+  background: linear-gradient(74.05deg, #102A43 0%, #FF7979 100%);
+}
+
+.notification-item.message {
+  background: linear-gradient(74.05deg, #102A43 0%, #7ADDDD 100%);
+}
+
+.notification-item.request {
+  background: linear-gradient(74.05deg, #102A43 0%, #51C772 100%);
+}

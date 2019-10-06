@@ -29,6 +29,18 @@ const DashSubnav = () => {
             Inbox
           </NavLink>
         </li>
+
+        <li>
+          <NavLink to="#" className="dash-subnav-item" activeClassName="active-subnav-item">
+            Comments
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="#" className="dash-subnav-item" activeClassName="active-subnav-item">
+            Requests
+          </NavLink>
+        </li>
       </ul>
     </nav>
   )

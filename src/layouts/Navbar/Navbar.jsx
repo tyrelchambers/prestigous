@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
+import NotificationBell from '../NotificationBell/NotificationBell';
 
 const Navbar = () => {
   return (
@@ -34,6 +35,10 @@ const Navbar = () => {
           <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/signup">
             Sign Up
           </NavLink>
+        </li>
+
+        <li className="navbar-item d-f ai-c jc-c">
+          <NotificationBell />
         </li>
       </ul>
     </nav>
