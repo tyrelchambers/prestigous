@@ -34,6 +34,8 @@ const Story = ({story}) => {
         
         <h3 className="subtitle thin mt- mb-">Notes</h3>
         <p className="subtitle">{story.notes}</p>
+
+        <hr className="hr"/>
       </main>
     </div>
   )
