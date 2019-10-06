@@ -90,7 +90,7 @@ const WriterForm = ({classNames, style}) => {
       <div className="d-f jc-c">
         <SubmitButton
           text="Get Started"
-          icon={<i className="fas fa-check-circle ml-"></i>}
+          icon={<i className="fas fa-check-circle mr-"></i>}
           onClick={submitHandler}
         />
       </div>

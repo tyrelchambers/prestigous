@@ -27,24 +27,28 @@ const CreateStoryForm = () => {
       </div>
 
       <h3 className="mt+ subtitle ta-c thin">Story Details</h3>
-      <div className="field-group">
-        <label htmlFor="title" className="form-label">Title</label>
-        <MainInput
-          placeholder="Story title"
-          name="title"
-        />
-      </div>
+      
+      <div className="bg-white p- br-8 bs">
+        <div className="field-group">
+          <label htmlFor="title" className="form-label">Title</label>
+          <MainInput
+            placeholder="Story title"
+            name="title"
+          />
+        </div>
 
-      <div className="field-group">
-        <label htmlFor="title" className="form-label">Author</label>
-        <MainInput
-          placeholder={`Defaults to ${fullName}`}
-          name="author"
-        />
+        <div className="field-group">
+          <label htmlFor="title" className="form-label">Author</label>
+          <MainInput
+            placeholder={`Defaults to ${fullName}`}
+            name="author"
+          />
+        </div>
       </div>
 
       <h3 className="mt+ subtitle ta-c thin">Meta Details</h3>
 
+     <div className="bg-white p- br-8 bs">
       <div className="field-group">
         <label htmlFor="theme" className="form-label">General Theme</label>
         <MainInput
@@ -68,6 +72,7 @@ const CreateStoryForm = () => {
           name="notes"
         />
       </div>
+     </div>
 
       <div className="d-f jc-c mt+">
         <SubmitButton
