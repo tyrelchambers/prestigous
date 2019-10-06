@@ -31,7 +31,7 @@
   border: 1px solid $grey9;
   border-radius: 8px;
   box-shadow: 0px 2px 15px rgba(black, 0.1);
-  opacity: 1;
+  display: block;
   transition: all 0.2s ease;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .dropdown-wrapper.hidden {
-  opacity: 0;
+  display: none;
 }
 
 .notification-badge {
