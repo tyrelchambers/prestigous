@@ -17,3 +17,7 @@ export const DangerButton = ({text, icon, onClick}) => {
     <button type="button" className="btn btn-danger" onClick={onClick}>{icon} {text}</button>
   )
 }
+
+export const MessageButton = ({icon, onClick}) => (
+  <button type="button" className="btn-message">{icon}</button>
+)

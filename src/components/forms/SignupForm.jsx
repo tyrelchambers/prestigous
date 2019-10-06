@@ -1,6 +1,5 @@
 import React from 'react'
 import { MainInput } from '../inputs/Inputs'
-import { SubmitButton } from '../buttons/Buttons'
 import FormWrapper from './FormWrapper'
 
 const SignupForm = ({classNames}) => {
