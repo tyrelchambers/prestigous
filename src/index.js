@@ -12,6 +12,7 @@ import Writer from './pages/Dashboard/Writer/Writer';
 import CreateStory from './pages/CreateStory/CreateStory';
 import DashIndex from './pages/Dashboard/DashIndex/DashIndex';
 import EditProfile from './pages/EditProfile/EditProfile';
+import Inbox from './pages/Inbox/Inbox';
 
 // creativesocial.app
 // prestigious.app
@@ -46,9 +47,10 @@ ReactDOM.render(
         <Route exact path="/" component={Home} />
         <Route path="/create_profile" component={CreateProfile} />
         <Route exact path="/signup" component={Signup} />
-        <PrivateRoute path="/dashboard" component={DashIndex}/>
+        <PrivateRoute exact path="/dashboard" component={DashIndex}/>
         <PrivateRoute path="/story/create" component={CreateStory} />
         <PrivateRoute path="/edit_profile" component={EditProfile}/>
+        <PrivateRoute exact path="/dashboard/inbox" component={Inbox} />
       </Switch>
     </Router>
   </Provider>, document.getElementById('root'));

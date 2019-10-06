@@ -1,0 +1,56 @@
+@import '../../colours.scss';
+
+.inbox-chat-wrapper {
+  background-color: #fff;
+  margin: 0 1em;
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0px 2px 15px rgba(black, 0.1);
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.inbox-chat-header {
+  border-bottom: 1px solid $grey10;
+}
+
+.personal-reply-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  main {
+    background-color: $grey4;    
+    color: white;
+  }
+}
+
+.other-reply-wrapper {
+  display: flex;
+
+  main {
+    color: $grey4; 
+    background-color: $grey10;
+  }
+}
+
+.chat-bubble {
+  margin: 3em 1em;
+  width: 100%;
+  
+  main {
+    line-height: 1.8em;
+    max-width: 900px;
+    min-width: 100px;
+    padding: 1em;
+    border-radius: 8px;
+  }
+}
+
+.inbox-chat-replies {
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+  padding-right: 2em;
+}

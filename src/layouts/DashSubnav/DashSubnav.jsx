@@ -25,7 +25,7 @@ const DashSubnav = () => {
         </li>
 
         <li>
-          <NavLink to="#" className="dash-subnav-item" activeClassName="active-subnav-item">
+          <NavLink to="/dashboard/inbox" className="dash-subnav-item" activeClassName="active-subnav-item">
             Inbox
           </NavLink>
         </li>
