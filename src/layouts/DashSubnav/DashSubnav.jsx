@@ -13,14 +13,8 @@ const DashSubnav = () => {
         </li>
 
         <li>
-          <NavLink to="#" className="dash-subnav-item" activeClassName="active-subnav-item">
+          <NavLink to="/story" className="dash-subnav-item" activeClassName="active-subnav-item">
             Stories
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink to="#" className="dash-subnav-item" activeClassName="active-subnav-item">
-            Socials
           </NavLink>
         </li>
 

@@ -1,0 +1,43 @@
+@import '../../colours.scss';
+
+.story-body {
+  white-space: pre-wrap;
+}
+
+.story-main {
+  width: 100%;
+  max-width: 800px;
+
+  .title {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+}
+
+.story-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.story-body {
+  color: $grey3;
+  line-height: 1.8em;
+  font-size: 0.9rem;
+}
+
+.story-meta {
+  display: flex;
+
+  li {
+    margin: 0.5em;
+    background-color: $grey10;
+    padding: 0.3em 0.7em;
+    border-radius: 20px;
+    color: $grey4;
+  }
+}
+
+.story-header {
+  margin: 4em 0;
+}
