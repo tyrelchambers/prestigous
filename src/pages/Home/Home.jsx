@@ -41,7 +41,8 @@ const Home = () => {
         </section>
 
         <div className=" pt+ ">
-          <StoryFilters />
+          <hr className="hr"/>
+          <h3 className="title">Recently Published</h3>
         </div>
 
         <main className="story-list-wrapper  pt- ">

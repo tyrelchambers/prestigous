@@ -14,7 +14,7 @@ const DashIndex = ({profileType = "writer"}) => {
     }
   }
   return (
-    <DisplayWrapper header={true}>
+    <DisplayWrapper header={true} classNames="bg-white">
       <Dashboard>
         <div className="dash-index-wrapper">
           {template()}
