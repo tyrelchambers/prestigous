@@ -14,6 +14,16 @@ const Story = ({story}) => {
         </section>
 
         <hr className="hr"/>
+        <div className="d-f">
+          <div className="d-f ai-c mr+">
+            <i className="far fa-heart mr- subtitle"></i>
+            <p className="subtitle">200 likes</p>
+          </div>
+
+          <p className="subtitle">
+            200 views
+          </p>
+        </div>
         <div className="mt- mb-">
           <h3 className="subtitle thin m0">Tags</h3>
           <ul className="story-meta">

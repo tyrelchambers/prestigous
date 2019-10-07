@@ -3,7 +3,7 @@ import './Comments.scss'
 
 const Comments = () => {
   return (
-    <div>
+    <div className="comments-wrapper">
       
     </div>
   )
