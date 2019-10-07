@@ -8,7 +8,6 @@ import './globals.scss';
 import Home from './pages/Home/Home';
 import CreateProfile from './pages/CreateProfile/CreateProfile';
 import Signup from './pages/Signup/Signup';
-import Writer from './pages/Dashboard/Writer/Writer';
 import CreateStory from './pages/CreateStory/CreateStory';
 import DashIndex from './pages/Dashboard/DashIndex/DashIndex';
 import EditProfile from './pages/EditProfile/EditProfile';
