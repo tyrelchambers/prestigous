@@ -50,7 +50,7 @@ const DashHeader = () => {
         </li>
 
         <li>
-          <Link to="/story/create" className="btn btn-secondary">
+          <Link to="/create_story" className="btn btn-secondary">
             <i className="fas fa-user-edit mr-"></i>
             Create a story
           </Link>
