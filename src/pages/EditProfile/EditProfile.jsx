@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './EditProfile.scss'
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
 import SignupForm from '../../components/forms/SignupForm'
@@ -7,8 +7,38 @@ import SocialMediaForm from '../../components/forms/editProfileForms/SocialMedia
 import { DashButton, DangerButton, SubmitButton } from '../../components/buttons/Buttons'
 import { Checkbox } from '../../components/inputs/Inputs'
 import DashSubnav from '../../layouts/DashSubnav/DashSubnav';
+import Axios from 'axios'
 
 const EditProfile = () => {
+  const [credentials, setCredentials] = useState();
+  const [ loading, setLoading ] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    const fn = async () => {
+      await Axios.get(`${process.env.REACT_APP_BACKEND}/api/profile/getProfile`, {
+        withCredentials: true
+      }).then(res => {
+        const {
+          profileCreated,
+          _id,
+          ...payload
+        } = res.data;
+
+        setCredentials(payload);
+        setLoading(false);
+      }).catch(console.log);
+    }
+
+    fn();
+  }, []);
+
+  const stateHandler = (e) => {
+    setCredentials({...credentials, [e.target.name]: e.target.value})
+  }
+
+  if (loading) return null;
+
   return (
     <DisplayWrapper header={true}>
       <DashSubnav />
@@ -18,13 +48,13 @@ const EditProfile = () => {
         <Block
           header="Profile Basics"
           blurb="Edit the public side of your account"
-          form={<ProfileBasicsForm />}
+          form={<ProfileBasicsForm onChange={(e) => stateHandler(e)} {...credentials} />}
         />
 
         <Block
           header="Social Media"
           blurb="This section is all about your social media links"
-          form={<SocialMediaForm profileType="narrator"/>}
+          form={<SocialMediaForm profileType="narrator" onChange={(e) => stateHandler(e)} {...credentials}/>}
         />
         <Block
           header="Discoverability"
@@ -34,7 +64,7 @@ const EditProfile = () => {
         <Block
           header="Account"
           blurb="Edit the security and more private details of your account"
-          form={<SignupForm />}
+          form={<SignupForm/>}
         />
         <Block
           header="Become Prestigious"

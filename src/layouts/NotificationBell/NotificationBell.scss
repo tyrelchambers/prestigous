@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  
    i {
     color: $grey5;
    }
@@ -33,6 +34,7 @@
   box-shadow: 0px 2px 15px rgba(black, 0.1);
   display: block;
   transition: all 0.2s ease;
+  z-index: 3;
 }
 
 .notification-bell-wrapper {

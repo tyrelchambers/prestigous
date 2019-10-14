@@ -2,15 +2,17 @@ import React from 'react'
 import { MainInput } from '../../inputs/Inputs'
 import FormWrapper from '../FormWrapper'
 
-const SocialMediaForm = ({profileType}) => {
-  if (profileType === "narrator") {
-    return (
+const SocialMediaForm = ({role, website, twitter, facebook, instagram, youtube, reddit, onChange}) => {
+
+  return (
       <FormWrapper>
         <div className="field-group">
           <label htmlFor="website" className="form-label">Website</label>
           <MainInput
             placeholder="www.example.com"
             type="text"
+            value={website}
+            onChange={onChange}
             name="website"
           />
         </div>
@@ -20,6 +22,8 @@ const SocialMediaForm = ({profileType}) => {
           <MainInput
             placeholder="@twitter"
             type="text"
+            value={twitter}
+            onChange={onChange}
             name="twitter"
           />
         </div>
@@ -29,6 +33,8 @@ const SocialMediaForm = ({profileType}) => {
           <MainInput
             placeholder="@facebook"
             type="text"
+            value={facebook}
+            onChange={onChange}
             name="facebook"
           />
         </div>
@@ -38,72 +44,39 @@ const SocialMediaForm = ({profileType}) => {
           <MainInput
             placeholder="@instagram"
             type="text"
-            
-          />
-        </div>
-
-        <div className="field-group">
-          <label htmlFor="youtube" className="form-label">Youtube</label>
-          <MainInput
-            placeholder="@youtube"
-            type="text"
-            name="youtube"
-          />
-        </div>
-      </FormWrapper>    
-    )
-  }
-
-  if ( profileType === "writer" ) {
-    return (
-      <FormWrapper>
-        <div className="field-group">
-          <label htmlFor="website" className="form-label">Website</label>
-          <MainInput
-            placeholder="www.example.com"
-            type="text"
-            name="website"
-          />
-        </div>
-
-        <div className="field-group">
-          <label htmlFor="twitter" className="form-label">Twitter</label>
-          <MainInput
-            placeholder="@twitter"
-            type="text"
-            name="twitter"
-          />
-        </div>
-
-        <div className="field-group">
-          <label htmlFor="facebook" className="form-label">Facebook</label>
-          <MainInput
-            placeholder="@facebook"
-            type="text"
-            name="facebook"
-          />
-        </div>
-
-        <div className="field-group">
-          <label htmlFor="instagram" className="form-label">Instagram</label>
-          <MainInput
-            placeholder="@instagram"
-            type="text"
+            value={instagram}
+            onChange={onChange}
             name="instagram"
           />
         </div>
 
-        <div className="field-group">
-          <label htmlFor="reddit" className="form-label">Reddit</label>
-          <MainInput
-            placeholder="u/JohnSmith123"
-            type="text"
-            name="reddit"
-          />
-        </div>
-      </FormWrapper>
+        {role === "narrator" &&
+          <div className="field-group">
+            <label htmlFor="youtube" className="form-label">Youtube</label>
+            <MainInput
+              placeholder="@youtube"
+              type="text"
+              value={youtube}
+              onChange={onChange}
+              name="youtube"
+            />
+          </div>
+        }
+  
+        {role === "writer" &&
+          <div className="field-group">
+            <label htmlFor="reddit" className="form-label">Reddit</label>
+            <MainInput
+              placeholder="u/JohnSmith123"
+              type="text"
+              value={reddit}
+              onChange={onChange}
+              name="reddit"
+            />
+          </div>
+        }        
+      </FormWrapper>    
     )
-  }
 }
 
 export default SocialMediaForm

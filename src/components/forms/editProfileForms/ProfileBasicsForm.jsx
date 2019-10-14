@@ -2,7 +2,7 @@ import React from 'react'
 import { MainInput } from '../../inputs/Inputs'
 import FormWrapper from '../FormWrapper'
 
-const ProfileBasicsForm = () => {
+const ProfileBasicsForm = ({firstName, lastName, username, onChange}) => {
   return (
     <FormWrapper>
        <div className="field-group">
@@ -11,6 +11,8 @@ const ProfileBasicsForm = () => {
           placeholder="John"
           type="text"
           name="firstName"
+          value={firstName}
+          onChange={onChange}
         />
       </div>
 
@@ -20,6 +22,8 @@ const ProfileBasicsForm = () => {
           placeholder="Smith"
           type="text"
           name="lastName"
+          value={lastName}
+          onChange={onChange}
         />
       </div>
 
@@ -29,6 +33,8 @@ const ProfileBasicsForm = () => {
           placeholder="JohnSmith123"
           type="text"
           name="username"
+          value={username}
+          onChange={onChange}
         />
       </div>
     </FormWrapper>

@@ -2,10 +2,9 @@ import React from 'react'
 import './forms.scss'
 import { MainInput } from '../inputs/Inputs'
 import { SubmitButton } from '../buttons/Buttons'
-import deleteParams from '../../helpers/deleteParams'
 import FormWrapper from './FormWrapper'
 
-const WriterForm = ({classNames, style}) => {
+const WriterForm = ({classNames, style, submitHandler, onChange}) => {
   return (
     <FormWrapper
       classNames={classNames}
@@ -19,6 +18,7 @@ const WriterForm = ({classNames, style}) => {
         <MainInput
           placeholder="John"
           type="text"
+          onChange={e => onChange(e)}
           name="firstName"
         />
       </div>
@@ -28,6 +28,7 @@ const WriterForm = ({classNames, style}) => {
         <MainInput
           placeholder="Smith"
           type="text"
+          onChange={e => onChange(e)}
           name="lastName"
         />
       </div>
@@ -37,6 +38,7 @@ const WriterForm = ({classNames, style}) => {
         <MainInput
           placeholder="JohnSmith123"
           type="text"
+          onChange={e => onChange(e)}
           name="username"
         />
       </div>
@@ -47,6 +49,7 @@ const WriterForm = ({classNames, style}) => {
         <MainInput
           placeholder="www.example.com"
           type="text"
+          onChange={e => onChange(e)}
           name="website"
         />
       </div>
@@ -56,6 +59,7 @@ const WriterForm = ({classNames, style}) => {
         <MainInput
           placeholder="@twitter"
           type="text"
+          onChange={e => onChange(e)}
           name="twitter"
         />
       </div>
@@ -65,6 +69,7 @@ const WriterForm = ({classNames, style}) => {
         <MainInput
           placeholder="@facebook"
           type="text"
+          onChange={e => onChange(e)}
           name="facebook"
         />
       </div>
@@ -74,6 +79,7 @@ const WriterForm = ({classNames, style}) => {
         <MainInput
           placeholder="@instagram"
           type="text"
+          onChange={e => onChange(e)}
           name="instagram"
         />
       </div>
@@ -83,6 +89,7 @@ const WriterForm = ({classNames, style}) => {
         <MainInput
           placeholder="u/JohnSmith123"
           type="text"
+          onChange={e => onChange(e)}
           name="reddit"
         />
       </div>
@@ -96,11 +103,5 @@ const WriterForm = ({classNames, style}) => {
       </div>
     </FormWrapper>
   )
-}
-
-const submitHandler = (e) => {
-  e.preventDefault();
-  const url = window.location.href;
-  deleteParams(url, "/dashboard", "r");
 }
 export default WriterForm

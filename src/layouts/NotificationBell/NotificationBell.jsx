@@ -40,7 +40,7 @@ const NotificationBell = () => {
   );
 
   return (
-    <div className={`notification-bell-wrapper ${expanded ? "expanded" : ""}`}>
+    <div className={`notification-bell-wrapper ml+ ${expanded ? "expanded" : ""}`}>
       {bellSelector}
       <Dropdown />
       <NotificationBadge/>

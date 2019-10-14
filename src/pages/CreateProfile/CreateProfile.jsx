@@ -1,16 +1,65 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import './CreateProfile.scss';
 import ParticlesBG from '../../components/Particles/Particles';
 import WriterForm from '../../components/forms/WriterForm';
 import NarratorForm from '../../components/forms/NarratorForm';
+import Axios from 'axios';
+import { useAuth0 } from '../../react-auth0-wrapper';
+import Cookies from 'js-cookie';
+import { inject } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 
-const CreateProfile = (props) => {
-  const param = props.location.search;
-
+const CreateProfile = inject("UserStore")(observer(({UserStore, location}) => {
+  const [ credentials, setCredentials ] = useState({});
+  const param = location.search;
+  const { user } = useAuth0();
+  const cookie = Cookies.get("sid");
   const isWriter = param.match(/writer/i);
   const isNarrator = param.match(/narrator/i);
+  const [ redirect, setRedirect ] = useState(false);
+
+  useEffect(() => {  
+    const fn = async () => {
+      await Axios.get(`${process.env.REACT_APP_BACKEND}/api/profile/getProfile`, {
+        withCredentials: true
+      }).then(res => {
+        if ( res.data.profileCreated ) {
+          setRedirect(true);
+        }
+      }).catch(console.log);
+    }  
+    if (cookie) {
+      fn();
+    }
+  }, []);
+
+  if ( redirect ) {
+    return <Redirect to="/" />;
+  }
+
+  const stateHandler = (e) => {
+    setCredentials({...credentials, [e.target.name]: e.target.value});
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const profileType = (isWriter || isNarrator);
+    const payload = {
+      ...credentials,
+      ...user,
+      role: profileType[0]
+    }
+
+    Axios.post(`${process.env.REACT_APP_BACKEND}/api/profile/create`, payload)
+      .then(res => {
+        Cookies.set("sid", res.data, { expires: 14});
+        UserStore.setProfile(res.data);
+        window.location.href = "/";
+      })
+      .catch(err => console.log(err));
+  }
 
   const activeForm = isWriter ? (
     <WriterForm
@@ -19,6 +68,8 @@ const CreateProfile = (props) => {
         position: "relative",
         top: "4em"
       }}
+      submitHandler={submitHandler}
+      onChange={stateHandler}
     />
   ) : (
     <NarratorForm
@@ -27,6 +78,9 @@ const CreateProfile = (props) => {
         position: "relative",
         top: "4em"
       }}
+
+      onChange={stateHandler}
+      submitHandler={submitHandler}
     />
   );
 
@@ -59,6 +113,6 @@ const CreateProfile = (props) => {
       </div>
     </DisplayWrapper>
   )
-}
+}));
 
 export default CreateProfile

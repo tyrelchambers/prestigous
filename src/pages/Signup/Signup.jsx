@@ -1,16 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
 import SignupForm from '../../components/forms/SignupForm'
 import { SubmitButton } from '../../components/buttons/Buttons'
 
 const Signup = () => {
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
+
+
+  const stateHandler = (e) => {
+    setCredentials({...credentials, [e.target.name]: e.target.value});
+  }
+
   return (
     <DisplayWrapper header={true}>
       <div className="d-f fxd-c ai-c p+">
         <div className="form-light p- w-560px">
         <h1 className="title ta-c">Become Prestigious</h1>
 
-          <SignupForm />
+          <SignupForm
+            onChange={stateHandler}
+          />
 
           <div className="d-f jc-c">
             <SubmitButton
@@ -24,6 +37,7 @@ const Signup = () => {
     </DisplayWrapper>
   )
 }
+
 
 const submitHandler = (e) => {
   e.preventDefault();

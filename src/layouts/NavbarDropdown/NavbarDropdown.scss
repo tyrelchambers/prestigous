@@ -1,0 +1,33 @@
+@import '../../colours.scss';
+
+.navbar-dropdown-wrapper {
+  position: absolute;
+  top: 1.5em;
+  width: 100%;
+  display: none;
+  padding-top:2.5em;
+  background-color: transparent;
+  opacity: 1;
+  z-index: 3;
+}
+.navbar-dashboard-dropdown {
+  width: 100%;
+  box-shadow: 0px 3px 30px rgba(black, 0.2);
+  padding: 1em;
+  border-radius: 5px;
+  height: 100%;
+  background-color: #fff;
+  li {
+    margin: 0.5em 0;
+  }
+}
+
+.dropdown-link {
+  text-decoration: none;
+  color: $grey5;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+

@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
 import FeaturedStory from '../../layouts/FeaturedStory/FeaturedStory'
 import FeaturedUser from '../../layouts/FeaturedUser/FeaturedUser'
-import StoryFilters from '../../components/StoryFilters/StoryFilters'
 import { Link } from 'react-router-dom'
 import './Home.scss'
 import GenreList from '../../layouts/GenreList/GenreList'
+import { useAuth0 } from '../../react-auth0-wrapper'
+
 
 const narrator = {
   username: "Stories After Midnight",
@@ -24,6 +25,8 @@ const story = {
 }
 
 const Home = () => {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <DisplayWrapper header={true}>
       <div className="p+">

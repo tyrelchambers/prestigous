@@ -2,11 +2,15 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import NotificationBell from '../NotificationBell/NotificationBell';
+import { useAuth0 } from '../../react-auth0-wrapper'
+import ProfileWidget from '../../components/ProfileWidget/ProfileWidget';
 
 const Navbar = () => {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
   return (
     <nav className="navbar-wrapper">
-      <ul>
+      <ul className="d-f ai-c">
         <li className="navbar-item" >
           <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/">
             Home
@@ -31,15 +35,32 @@ const Navbar = () => {
           </NavLink>
         </li>
 
-        <li className="navbar-item" >
-          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/signup">
-            Sign Up
-          </NavLink>
-        </li>
+        {!isAuthenticated &&
+          <li className="navbar-item" >
+            <a href="#" 
+            
+              onClick={() =>
+                loginWithRedirect({
+                  redirect_uri: "http://localhost:3000/callback"
+                })
+              }
+            >
+              Log in
+            </a>
+          </li>
+        }
 
-        <li className="navbar-item d-f ai-c jc-c">
-          <NotificationBell />
-        </li>
+        {isAuthenticated &&
+          <React.Fragment>
+            <li className="navbar-item d-f ai-c jc-c">
+              <NotificationBell />
+            </li>
+
+            <li>
+              <ProfileWidget />
+            </li>
+          </React.Fragment>
+        }
       </ul>
     </nav>
   )

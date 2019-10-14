@@ -4,7 +4,7 @@ import { MainInput } from '../inputs/Inputs'
 import { SubmitButton } from '../buttons/Buttons'
 import FormWrapper from './FormWrapper'
 
-const NarratorForm = ({classNames, style}) => {
+const NarratorForm = ({classNames, style, submitHandler, onChange}) => {
   return (
     <FormWrapper
       classNames={classNames}
@@ -17,6 +17,7 @@ const NarratorForm = ({classNames, style}) => {
         <MainInput
           placeholder="John"
           type="text"
+          onChange={e => onChange(e)}
           name="firstName"
         />
       </div>
@@ -26,6 +27,7 @@ const NarratorForm = ({classNames, style}) => {
         <MainInput
           placeholder="Smith"
           type="text"
+          onChange={e => onChange(e)}
           name="lastName"
         />
       </div>
@@ -35,6 +37,7 @@ const NarratorForm = ({classNames, style}) => {
         <MainInput
           placeholder="JohnSmith123"
           type="text"
+          onChange={e => onChange(e)}
           name="username"
         />
       </div>
@@ -45,6 +48,7 @@ const NarratorForm = ({classNames, style}) => {
         <MainInput
           placeholder="www.example.com"
           type="text"
+          onChange={e => onChange(e)}
           name="website"
         />
       </div>
@@ -54,6 +58,7 @@ const NarratorForm = ({classNames, style}) => {
         <MainInput
           placeholder="@twitter"
           type="text"
+          onChange={e => onChange(e)}
           name="twitter"
         />
       </div>
@@ -63,6 +68,7 @@ const NarratorForm = ({classNames, style}) => {
         <MainInput
           placeholder="@facebook"
           type="text"
+          onChange={e => onChange(e)}
           name="facebook"
         />
       </div>
@@ -72,6 +78,7 @@ const NarratorForm = ({classNames, style}) => {
         <MainInput
           placeholder="@instagram"
           type="text"
+          onChange={e => onChange(e)}
           
         />
       </div>
@@ -81,6 +88,7 @@ const NarratorForm = ({classNames, style}) => {
         <MainInput
           placeholder="@youtube"
           type="text"
+          onChange={e => onChange(e)}
           name="youtube"
         />
       </div>
@@ -89,6 +97,7 @@ const NarratorForm = ({classNames, style}) => {
         <SubmitButton
           text="Get Started"
           icon={<i className="fas fa-check-circle mr-"></i>}
+          onClick={submitHandler}
         />
       </div>
     </FormWrapper>
