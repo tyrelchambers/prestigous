@@ -22,7 +22,7 @@ const CreateProfile = inject("UserStore")(observer(({UserStore, location}) => {
 
   useEffect(() => {  
     const fn = async () => {
-      await Axios.get(`${process.env.REACT_APP_BACKEND}/api/profile/getProfile`, {
+      await Axios.get(`${process.env.REACT_APP_BACKEND_USERS}/api/profile/getProfile`, {
         withCredentials: true
       }).then(res => {
         if ( res.data.profileCreated ) {
@@ -52,7 +52,7 @@ const CreateProfile = inject("UserStore")(observer(({UserStore, location}) => {
       role: profileType[0]
     }
 
-    Axios.post(`${process.env.REACT_APP_BACKEND}/api/profile/create`, payload)
+    Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/profile/create`, payload)
       .then(res => {
         Cookies.set("sid", res.data, { expires: 14});
         UserStore.setProfile(res.data);

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import LogRocket from 'logrocket';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 import { Auth0Provider } from "./react-auth0-wrapper";
 import config from "./auth_config.json";
@@ -18,7 +17,6 @@ import Inbox from './pages/Inbox/Inbox';
 import StoryPage from './pages/StoryPage/StoryPage';
 import {useAuth0} from './react-auth0-wrapper'
 import UserStore from './stores/UserStore';
-import isEmpty from './helpers/emptyObject';
 import Cookie from 'js-cookie';
 import Axios from 'axios';
 
@@ -75,7 +73,7 @@ ReactDOM.render(
             const cookie = Cookie.get("sid");
             
             if ( cookie ) {
-              Axios.get(`${process.env.REACT_APP_BACKEND}/api/profile/getProfile`, {
+              Axios.get(`${process.env.REACT_APP_BACKEND_USERS}/api/profile/getProfile`, {
                   withCredentials: true
                 }).then(res => {
                   if ( res.data.profileCreated ) {
@@ -94,10 +92,17 @@ ReactDOM.render(
           <PrivateRoute exact path="/create_story" component={CreateStory} />
           <PrivateRoute path="/edit_profile" component={EditProfile}/>
           <PrivateRoute exact path="/dashboard/inbox" component={Inbox} />
+          <PrivateRoute exact path="/profile/stories" component={""} />
         </Switch>
       </Router>
     </Provider>
-  </Auth0Provider>, document.getElementById('root'));
+  </Auth0Provider>, document.getElementById('root'), () => {
+    Axios.get(`${process.env.REACT_APP_BACKEND_USERS}/api/profile/getProfile`, {
+      withCredentials: true
+    }).then(res => {
+      stores.UserStore.setProfile(res.data);
+    }).catch(console.log);
+  });
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -16,7 +16,7 @@ const EditProfile = () => {
   useEffect(() => {
     setLoading(true);
     const fn = async () => {
-      await Axios.get(`${process.env.REACT_APP_BACKEND}/api/profile/getProfile`, {
+      await Axios.get(`${process.env.REACT_APP_BACKEND_USERS}/api/profile/getProfile`, {
         withCredentials: true
       }).then(res => {
         const {

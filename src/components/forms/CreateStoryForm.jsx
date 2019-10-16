@@ -4,14 +4,7 @@ import { MainInput } from '../inputs/Inputs'
 import ReactQuill from 'react-quill';
 import { SubmitButton } from '../buttons/Buttons';
 
-const CreateStoryForm = () => {
- 
-  const fullName = "Tyrel Chambers";
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    window.location.href = "/dashboard";
-  }
+const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor}) => {
 
   return (
     <FormWrapper classNames="form-wide">
@@ -22,6 +15,7 @@ const CreateStoryForm = () => {
             theme="bubble"
             placeholder="Create your epic..."
             bounds="#editor"
+            onChange={updateEditor}
           />
         </div>
       </div>
@@ -34,14 +28,20 @@ const CreateStoryForm = () => {
           <MainInput
             placeholder="Story title"
             name="title"
+            type="text"
+            onChange={stateHandler}
+            value={state.title}
           />
         </div>
 
         <div className="field-group">
           <label htmlFor="title" className="form-label">Author</label>
           <MainInput
-            placeholder={`Defaults to ${fullName}`}
+            placeholder={`Defaults to ${state.author}`}
             name="author"
+            type="text"
+            onChange={stateHandler}
+            value={`${state.author}`}
           />
         </div>
       </div>
@@ -54,6 +54,9 @@ const CreateStoryForm = () => {
         <MainInput
           placeholder="Dark Web, Horror, Feel Good, Wholesome, Romantic, etc. (Up to 3)"
           name="theme"
+          type="text"
+          onChange={stateHandler}
+          value={state.theme}
         />
       </div>
 
@@ -62,6 +65,9 @@ const CreateStoryForm = () => {
         <MainInput
           placeholder="Press 'Enter' to submit a tag"
           name="tags"
+          type="text"
+          onChange={stateHandler}
+          value={state.tags}
         />
       </div>
 
@@ -70,6 +76,9 @@ const CreateStoryForm = () => {
         <MainInput
           placeholder="Notes are public information included alongside your story"
           name="notes"
+          type="text"
+          onChange={stateHandler}
+          value={state.note}
         />
       </div>
      </div>
