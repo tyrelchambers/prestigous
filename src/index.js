@@ -17,11 +17,14 @@ import Inbox from './pages/Inbox/Inbox';
 import StoryPage from './pages/StoryPage/StoryPage';
 import {useAuth0} from './react-auth0-wrapper'
 import UserStore from './stores/UserStore';
+import StoryStore from './stores/StoryStore';
 import Cookie from 'js-cookie';
 import Axios from 'axios';
+import PreviewStory from './pages/PreviewStory/PreviewStory';
 
 const stores = {
-  UserStore
+  UserStore,
+  StoryStore
 }
 
 const onRedirectCallback = appState => {
@@ -93,6 +96,7 @@ ReactDOM.render(
           <PrivateRoute path="/edit_profile" component={EditProfile}/>
           <PrivateRoute exact path="/dashboard/inbox" component={Inbox} />
           <PrivateRoute exact path="/profile/stories" component={""} />
+          <PrivateRoute exact path="/story/preview" component={PreviewStory} />
         </Switch>
       </Router>
     </Provider>

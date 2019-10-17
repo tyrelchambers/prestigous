@@ -1,10 +1,11 @@
 import React from 'react'
 import './Story.scss'
+import { toJS } from 'mobx'
 
 const Story = ({story}) => {
   return (
     <div className="story-wrapper">
-      <main className="story-main">
+      {/* <main className="story-main">
         <div className="story-header">
           <h1 className="title ta-c ">{story.title}</h1>
           <p className="subtitle ta-c">{story.username}</p>
@@ -46,7 +47,7 @@ const Story = ({story}) => {
         <p className="subtitle">{story.notes}</p>
 
         <hr className="hr"/>
-      </main>
+      </main> */}
     </div>
   )
 }

@@ -6,24 +6,35 @@ import { inject, observer } from 'mobx-react';
 import Axios from 'axios';
 import { toast } from 'react-toastify';
 import DashSubnav from '../../layouts/DashSubnav/DashSubnav';
+import {format} from 'date-fns';
 
-const CreateStory = inject("UserStore")(observer(({UserStore}) => {
+const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, StoryStore}) => {
   const [details, setDetails ] = useState({
     title: "",
     editor: "",
     tags: "",
     author: "",
-    theme: ""
+    theme: "",
+    files: [],
+    draftId: ""
   });
+
+  const [ timer, setTimer ] = useState(5000);
 
   useEffect(() => {
     setDetails({
       author: `${UserStore.profile.firstName} ${UserStore.profile.lastName}`
     });
+
   }, [UserStore.profile]);
+
+  useEffect(() => {
+    autoSaveTimer();
+  }, [timer]);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(details)
     Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/create`, {
       ...details
     }, {
@@ -31,7 +42,7 @@ const CreateStory = inject("UserStore")(observer(({UserStore}) => {
     })
     .then(res => toast.success(res.data.success))
     .catch(console.log);
-    window.location.href = "/dashboard";
+    // window.location.href = "/dashboard";
   }
 
   const stateHandler = (e) => {
@@ -42,6 +53,33 @@ const CreateStory = inject("UserStore")(observer(({UserStore}) => {
     setDetails({...details, editor: v})
   }
 
+  const fileUploadHandler = v => {
+    setDetails({...details, files: v.map(fileItem => fileItem.file)})
+  }
+
+  const autoSaveTimer = () => {
+    setTimeout(() => {
+      if ( timer === 0 ) {
+        previewHandler();
+        return setTimer(300000);
+      }
+      setTimer(timer - 1000);
+    }, 1000);
+  }
+
+  const previewHandler = () => {
+    Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/draft/save`, {
+      ...details
+    }, {
+      withCredentials: true
+    })
+    .then(res => {
+      setDetails({...details, draftId: res.data.draftId});
+      toast.success("Draft saved")
+    })
+    .catch(console.log);
+  }
+
   return (
     <DisplayWrapper 
       header={true}
@@ -49,11 +87,14 @@ const CreateStory = inject("UserStore")(observer(({UserStore}) => {
       <DashSubnav />
       <div className="container center create-story-wrapper">
         <h1 className="title">Create Your Next Masterpiece!</h1>
+        <p className="subtitle">Autosave in {format(timer, "m:ss")}</p>
         <CreateStoryForm
           state={details}
+          fileUploadToState={fileUploadHandler}
           stateHandler={stateHandler}
           submitHandler={submitHandler}
           updateEditor={updateEditorHandler}
+          previewHandler={previewHandler}
         />
       </div>
     </DisplayWrapper>
