@@ -79,7 +79,7 @@ ReactDOM.render(
               Axios.get(`${process.env.REACT_APP_BACKEND_USERS}/api/profile/getProfile`, {
                   withCredentials: true
                 }).then(res => {
-                  if ( res.data.profileCreated ) {
+                  if ( res.data.profileCreated && useAuth0.isAuthenticated ) {
                     window.location.href = "/";
                   }
                 }).catch(console.log);
@@ -96,7 +96,7 @@ ReactDOM.render(
           <PrivateRoute path="/edit_profile" component={EditProfile}/>
           <PrivateRoute exact path="/dashboard/inbox" component={Inbox} />
           <PrivateRoute exact path="/profile/stories" component={""} />
-          <PrivateRoute exact path="/story/preview" component={PreviewStory} />
+          <PrivateRoute exact path="/story/preview/:draftId" component={PreviewStory} />
         </Switch>
       </Router>
     </Provider>

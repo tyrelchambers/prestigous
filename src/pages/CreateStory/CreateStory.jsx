@@ -11,9 +11,9 @@ import {format} from 'date-fns';
 const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, StoryStore}) => {
   const [details, setDetails ] = useState({
     title: "",
-    editor: "",
+    body: "",
     tags: "",
-    author: "",
+    username: "",
     theme: "",
     files: [],
     draftId: ""
@@ -23,7 +23,7 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
 
   useEffect(() => {
     setDetails({
-      author: `${UserStore.profile.firstName} ${UserStore.profile.lastName}`
+      username: `${UserStore.profile.firstName} ${UserStore.profile.lastName}`
     });
 
   }, [UserStore.profile]);
@@ -50,7 +50,7 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
   }
 
   const updateEditorHandler = (v) => {
-    setDetails({...details, editor: v})
+    setDetails({...details, body: v})
   }
 
   const fileUploadHandler = v => {
@@ -67,17 +67,23 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
     }, 1000);
   }
 
-  const previewHandler = () => {
-    Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/draft/save`, {
+  const previewHandler = async () => {
+    return await Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/draft/save`, {
       ...details
     }, {
       withCredentials: true
     })
     .then(res => {
       setDetails({...details, draftId: res.data.draftId});
-      toast.success("Draft saved")
+      return res.data.draftId;
     })
     .catch(console.log);
+  }
+
+  const getDraft = async () => {
+    await previewHandler().then(res => {
+      window.open(`/story/preview/draftId=${res}`);
+    });
   }
 
   return (
@@ -94,7 +100,7 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
           stateHandler={stateHandler}
           submitHandler={submitHandler}
           updateEditor={updateEditorHandler}
-          previewHandler={previewHandler}
+          previewHandler={getDraft}
         />
       </div>
     </DisplayWrapper>

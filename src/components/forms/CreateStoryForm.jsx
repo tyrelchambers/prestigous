@@ -2,7 +2,7 @@ import React from 'react'
 import FormWrapper from './FormWrapper'
 import { MainInput } from '../inputs/Inputs'
 import ReactQuill from 'react-quill';
-import { SubmitButton } from '../buttons/Buttons';
+import { SubmitButton, DashButton, SecondaryButton } from '../buttons/Buttons';
 import FileUploader from '../FileUploader/FileUploader';
 
 const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, fileUploadToState, previewHandler}) => {
@@ -38,11 +38,11 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, file
         <div className="field-group">
           <label htmlFor="title" className="form-label">Author</label>
           <MainInput
-            placeholder={`Defaults to ${state.author}`}
+            placeholder={`Defaults to ${state.username}`}
             name="author"
             type="text"
             onChange={stateHandler}
-            value={`${state.author}`}
+            value={`${state.username}`}
           />
         </div>
       </div>
@@ -91,14 +91,18 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, file
         </div>
       </div>
 
-      <div className="d-f jc-c mt+">
+      <div className="d-f jc-sb mt+">
+        <SecondaryButton
+          text="Preview Story"
+          onClick={previewHandler}
+          classNames="mr-"
+        />
+
         <SubmitButton
           icon={<i className="fas fa-check mr-"></i>}
           text="Submit Story"
           onClick={submitHandler}
-        />
-
-        <a href="/story/preview" target="_blank" onClick={previewHandler}>Preview Story</a>
+        /> 
       </div>
     </FormWrapper>
   )

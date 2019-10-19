@@ -41,6 +41,17 @@
   }
 }
 
+.btn-minimal {
+  background-color: transparent;
+  border: 2px solid $grey7;
+  color: $grey7;
+
+  &:hover {
+    background-color: $grey7;
+    color: white;
+  }
+}
+
 .btn-message {
   background-color: transparent;
   border: none;

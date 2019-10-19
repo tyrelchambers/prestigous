@@ -5,7 +5,6 @@ class StoryStore {
 
   setPreview(story) {
     this.preview = story;
-    console.log(this.preview);
   }
 }
 

@@ -1,21 +1,31 @@
 import React, {useState, useEffect} from 'react'
 import Story from '../../components/Story/Story'
-import { inject, observer } from 'mobx-react'
+import Axios from 'axios';
 
-const PreviewStory = inject("StoryStore")(observer(({StoryStore}) => {
+const PreviewStory = ({match}) => {
   const [ story, setStory ] = useState();
+  const {draftId} = match.params;
 
   useEffect(() => {
-    setStory(StoryStore.preview);
+    Axios.get(`${process.env.REACT_APP_BACKEND_USERS}/api/story/draft/${draftId}`, {
+      withCredentials: true
+    })
+    .then(res =>{
+      console.log(res)  
+      setStory(res.data)})
+    .catch(console.log)
   }, []);
 
   return (
     <div>
-      {/* <Story 
-        story={story}
-      /> */}
+      <h1>Hey</h1>
+      {story &&
+        <Story 
+          story={story}
+        />
+      }
     </div>
   )
-}));
+}
 
 export default PreviewStory
