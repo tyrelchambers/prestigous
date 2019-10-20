@@ -28,9 +28,9 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
 
   }, [UserStore.profile]);
 
-  useEffect(() => {
-    autoSaveTimer();
-  }, [timer]);
+  // useEffect(() => {
+  //   autoSaveTimer();
+  // }, [timer]);
 
   const submitHandler = (e) => {
     e.preventDefault();

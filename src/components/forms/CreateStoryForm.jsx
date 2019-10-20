@@ -13,7 +13,7 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, file
         <label htmlFor="body" className="form-label">Story</label>
         <div id="editor">
           <ReactQuill
-            theme="bubble"
+            theme="snow"
             placeholder="Create your epic..."
             bounds="#editor"
             onChange={updateEditor}

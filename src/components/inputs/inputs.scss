@@ -8,6 +8,9 @@
   padding: 1em 1em;
   font-size: 0.8rem;
   color: $grey2;
+  &::placeholder {
+    font-style: italic;
+  }
 }
 
 .form-label {
