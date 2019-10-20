@@ -5,7 +5,7 @@ import ReactQuill from 'react-quill';
 import { SubmitButton, DashButton, SecondaryButton } from '../buttons/Buttons';
 import FileUploader from '../FileUploader/FileUploader';
 
-const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, fileUploadToState, previewHandler}) => {
+const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, fileUploadToState, previewHandler, pondRef}) => {
 
   return (
     <FormWrapper classNames="form-wide">
@@ -38,8 +38,8 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, file
         <div className="field-group">
           <label htmlFor="title" className="form-label">Author</label>
           <MainInput
-            placeholder={`Defaults to ${state.username}`}
-            name="author"
+            placeholder={`Defaults to your username`}
+            name="username"
             type="text"
             onChange={stateHandler}
             value={`${state.username}`}
@@ -55,6 +55,7 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, file
           <FileUploader 
             fileUploadToState={fileUploadToState}
             state={state}  
+            pondRef={pondRef}
           />
         </div>
         <div className="field-group">

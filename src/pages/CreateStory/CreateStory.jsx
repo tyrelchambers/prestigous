@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import CreateStoryForm from '../../components/forms/CreateStoryForm'
 import './CreateStory.scss'
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper';
@@ -16,9 +16,12 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
     username: "",
     theme: "",
     files: [],
-    draftId: ""
+    draftId: "",
+    bannerUrl: ""
   });
+  let pond = useRef(null);
 
+  console.log(details)
   const [ timer, setTimer ] = useState(5000);
 
   useEffect(() => {
@@ -32,16 +35,23 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
   //   autoSaveTimer();
   // }, [timer]);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+    const {
+      files,
+      ...payload
+    } = details;
+    
+    await processFiles()
+
     console.log(details)
-    Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/create`, {
-      ...details
-    }, {
-      withCredentials: true
-    })
-    .then(res => toast.success(res.data.success))
-    .catch(console.log);
+    // Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/create`, {
+    //   ...details
+    // }, {
+    //   withCredentials: true
+    // })
+    // .then(res => toast.success(res.data.success))
+    // .catch(console.log);
     // window.location.href = "/dashboard";
   }
 
@@ -65,6 +75,14 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
       }
       setTimer(timer - 1000);
     }, 1000);
+  }
+
+  const processFiles = async () => {
+    if ( details.files.length > 0 ) {
+      await pond.current.processFiles().then(files => {
+        setDetails({...details, bannerUrl: files[0].serverId});
+      });
+    }
   }
 
   const previewHandler = async () => {
@@ -101,6 +119,7 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
           submitHandler={submitHandler}
           updateEditor={updateEditorHandler}
           previewHandler={getDraft}
+          pondRef={pond}
         />
       </div>
     </DisplayWrapper>
