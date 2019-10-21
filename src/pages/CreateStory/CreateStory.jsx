@@ -15,7 +15,6 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
     tags: "",
     username: "",
     theme: "",
-    files: [],
     draftId: "",
     bannerUrl: ""
   });
@@ -44,14 +43,14 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
     
     await processFiles()
 
-    console.log(details)
-    // Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/create`, {
-    //   ...details
-    // }, {
-    //   withCredentials: true
-    // })
-    // .then(res => toast.success(res.data.success))
-    // .catch(console.log);
+
+    Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/create`, {
+      ...payload
+    }, {
+      withCredentials: true
+    })
+    .then(res => toast.success(res.data.success))
+    .catch(console.log);
     // window.location.href = "/dashboard";
   }
 
@@ -78,11 +77,10 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
   }
 
   const processFiles = async () => {
-    if ( details.files.length > 0 ) {
-      await pond.current.processFiles().then(files => {
-        setDetails({...details, bannerUrl: files[0].serverId});
-      });
-    }
+    await pond.current.processFiles().then(files => {
+      setDetails({...details, bannerUrl: files[0].serverId});
+    });
+    
   }
 
   const previewHandler = async () => {
@@ -102,6 +100,7 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
     await previewHandler().then(res => {
       window.open(`/story/preview/draftId=${res}`);
     });
+    
   }
 
   return (

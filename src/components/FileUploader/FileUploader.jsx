@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
@@ -7,15 +7,13 @@ import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-const FileUploader = ({state, fileUploadToState, pondRef}) => {
-
-
-
+const FileUploader = ({state, pondRef}) => {
+  const [_file, _setFile] = useState([]);
+  console.log(_file)
   return (
     <div>
       <FilePond
           ref={ref => (pondRef.current = ref)}
-          files={state.files}
           allowMultiple={true}
           maxFiles={1}
           data-max-file-size="2MB"
@@ -36,7 +34,7 @@ const FileUploader = ({state, fileUploadToState, pondRef}) => {
           onupdatefiles={fileItems => {
             // Set currently active file objects to this.state
             
-            fileUploadToState(fileItems);
+            _setFile({file: fileItems.map(fileItem => fileItem.file)});
           }}
         />
     </div>

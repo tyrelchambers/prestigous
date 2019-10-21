@@ -53,8 +53,6 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, file
         <div className="field-group">
           <label className="form-label">Upload Cover Photo</label>
           <FileUploader 
-            fileUploadToState={fileUploadToState}
-            state={state}  
             pondRef={pondRef}
           />
         </div>
