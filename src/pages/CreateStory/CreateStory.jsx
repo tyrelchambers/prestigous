@@ -20,7 +20,6 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
   });
   let pond = useRef(null);
 
-  console.log(details)
   const [ timer, setTimer ] = useState(5000);
 
   useEffect(() => {
@@ -41,11 +40,11 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
       ...payload
     } = details;
     
-    await processFiles()
-
+    const bannerUrl = await processFiles();
 
     Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/create`, {
-      ...payload
+      ...payload,
+      bannerUrl
     }, {
       withCredentials: true
     })
@@ -77,10 +76,10 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
   }
 
   const processFiles = async () => {
-    await pond.current.processFiles().then(files => {
-      setDetails({...details, bannerUrl: files[0].serverId});
+    const banner = await pond.current.processFiles().then(files => {
+      return files[0].serverId;
     });
-    
+    return banner;
   }
 
   const previewHandler = async () => {

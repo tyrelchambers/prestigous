@@ -7,9 +7,9 @@ import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-const FileUploader = ({state, pondRef}) => {
+const FileUploader = ({pondRef}) => {
   const [_file, _setFile] = useState([]);
-  console.log(_file)
+
   return (
     <div>
       <FilePond
