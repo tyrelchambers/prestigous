@@ -6,7 +6,12 @@
   padding: 1em;
   border-radius: 5px;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  padding-right: 30px;
+  &:hover {
+    overflow-y: auto;
+  }
 }
 
 .avatar-small {

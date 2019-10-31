@@ -42,7 +42,7 @@ const EditProfile = () => {
   return (
     <DisplayWrapper header={true}>
       <DashSubnav />
-
+      {console.log(credentials)}
       <div className="center edit-profile-wrapper  container mb+">
         <h1 className="title ta-c">Edit your profile</h1>
         <Block

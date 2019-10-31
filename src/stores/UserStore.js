@@ -1,4 +1,4 @@
-import { decorate, observable, action } from 'mobx';
+import { decorate, observable, action, computed } from 'mobx';
 
 class UserStore {
   currentUser = {}
@@ -9,7 +9,12 @@ class UserStore {
   }
 
   setProfile(profile) {
+    console.log(profile)
     this.profile = profile;
+  }
+
+  get username() {
+    return `${this.profile.firstName} ${this.profile.lastName}`;
   }
 }
 
@@ -17,7 +22,8 @@ decorate(UserStore, {
   currentUser: observable,
   profile: observable,
   setCurrentUser: action,
-  setProfile: action
+  setProfile: action,
+  username: computed
 })
 
 export default new UserStore();

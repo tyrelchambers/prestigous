@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import DashSubnav from '../../layouts/DashSubnav/DashSubnav';
 import {format} from 'date-fns';
 
-const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, StoryStore}) => {
+const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore}) => {
   const [details, setDetails ] = useState({
     title: "",
     body: "",
@@ -21,12 +21,9 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore, Stor
   let pond = useRef(null);
 
   const [ timer, setTimer ] = useState(5000);
-
+  
   useEffect(() => {
-    setDetails({
-      username: `${UserStore.profile.firstName} ${UserStore.profile.lastName}`
-    });
-
+    setDetails(UserStore.profile);
   }, [UserStore.profile]);
 
   // useEffect(() => {

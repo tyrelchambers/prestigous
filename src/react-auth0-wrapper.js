@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import createAuth0Client from "@auth0/auth0-spa-js";
+import { getProfile, getCookieFromDb } from "./api/users/profile";
+import { observer } from "mobx-react";
+import UserStore from "./stores/UserStore";
+import Cookies from 'js-cookie';
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 
 export const Auth0Context = React.createContext();
 export const useAuth0 = () => useContext(Auth0Context);
-export const Auth0Provider = ({
+export const Auth0Provider = observer(({
   children,
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
   ...initOptions
@@ -33,6 +37,8 @@ export const Auth0Provider = ({
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
+        getProfile().then(res => UserStore.setProfile(res));
+        getCookieFromDb(user).then(res => Cookies.set('sid', res, {expires: 1}));
         setUser(user);
       }
 
@@ -83,4 +89,4 @@ export const Auth0Provider = ({
       {children}
     </Auth0Context.Provider>
   );
-};
+});

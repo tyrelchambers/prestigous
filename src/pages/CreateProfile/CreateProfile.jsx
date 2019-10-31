@@ -54,7 +54,7 @@ const CreateProfile = inject("UserStore")(observer(({UserStore, location}) => {
 
     Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/profile/create`, payload)
       .then(res => {
-        Cookies.set("sid", res.data, { expires: 14});
+        Cookies.set("sid", res.data, { expires: 1});
         UserStore.setProfile(res.data);
         window.location.href = "/";
       })

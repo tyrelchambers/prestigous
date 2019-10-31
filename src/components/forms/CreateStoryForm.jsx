@@ -2,10 +2,10 @@ import React from 'react'
 import FormWrapper from './FormWrapper'
 import { MainInput } from '../inputs/Inputs'
 import ReactQuill from 'react-quill';
-import { SubmitButton, DashButton, SecondaryButton } from '../buttons/Buttons';
+import { SubmitButton, SecondaryButton } from '../buttons/Buttons';
 import FileUploader from '../FileUploader/FileUploader';
 
-const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, fileUploadToState, previewHandler, pondRef}) => {
+const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, previewHandler, pondRef}) => {
 
   return (
     <FormWrapper classNames="form-wide">
