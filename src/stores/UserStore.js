@@ -9,7 +9,6 @@ class UserStore {
   }
 
   setProfile(profile) {
-    console.log(profile)
     this.profile = profile;
   }
 

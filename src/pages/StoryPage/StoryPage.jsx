@@ -3,20 +3,28 @@ import './StoryPage.scss'
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
 import Story from '../../components/Story/Story'
 import Axios from 'axios'
+import { getStory } from '../../api/users/stories'
 
 const StoryPage = ({match}) => {
   const [ story, setStory ] = useState();
+  const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_BACKEND_USERS}/api/story/${match.params.storyId}`)
-    .then(res => setStory(res.data))
-    .catch(console.log);
-  }, [match.params.storyId]);
+    const fn = async () => {
+      const _ = await getStory(match.params.storyId);
+      setStory({..._});
+    }
+
+    fn();
+    setLoading(false);
+
+  }, []);
+
+  if (loading) return null;
 
   return (
     <DisplayWrapper header={true}>
-      {/* <Story story={story}/> */}
-      {console.log(story)}
+      <Story story={story}/>
     </DisplayWrapper>
   )
 }

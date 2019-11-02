@@ -21,6 +21,7 @@ import Cookies from 'js-cookie';
 import Axios from 'axios';
 import PreviewStory from './pages/PreviewStory/PreviewStory';
 import { getProfile, getCookieFromDb } from './api/users/profile';
+import ProfileStories from './pages/ProfileStories/ProfileStories';
 
 const stores = {
   UserStore,
@@ -112,6 +113,7 @@ ReactDOM.render(
           <PrivateRoute exact path="/dashboard/inbox" component={Inbox} />
           <PrivateRoute exact path="/story/:storyId" component={StoryPage} />
           <PrivateRoute exact path="/story/preview/:draftId" component={PreviewStory} />
+          <PrivateRoute exact path="/profile/stories" component={ProfileStories} />
         </Switch>
       </Router>
     </Provider>

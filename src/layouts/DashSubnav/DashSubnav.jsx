@@ -13,7 +13,7 @@ const DashSubnav = () => {
         </li>
 
         <li>
-          <NavLink to="/story" className="dash-subnav-item" activeClassName="active-subnav-item">
+          <NavLink to="/profile/stories" className="dash-subnav-item" activeClassName="active-subnav-item">
             Stories
           </NavLink>
         </li>

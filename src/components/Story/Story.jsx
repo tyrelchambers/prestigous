@@ -2,6 +2,8 @@ import React from 'react'
 import './Story.scss'
 
 const Story = ({story}) => {
+  if ( !story ) return null;
+
   const tags = story.tags ? story.tags.map(x => (
     <li>{x}</li>
   )): null;

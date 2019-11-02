@@ -72,3 +72,13 @@ p {
   margin: 2em 0 ;
   background-color: $grey9;
 } 
+.story-list-wrapper {
+  width: 100%;
+  margin-top: 1em;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, 350px);
+  grid-auto-flow: row;
+  row-gap: 2em;
+  column-gap: 2em;
+}
