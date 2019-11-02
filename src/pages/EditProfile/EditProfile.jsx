@@ -47,13 +47,13 @@ const EditProfile = () => {
         <Block
           header="Profile Basics"
           blurb="Edit the public side of your account"
-          form={<ProfileBasicsForm onChange={(e) => stateHandler(e)} {...credentials} />}
+          form={<ProfileBasicsForm classNames="form-wide" onChange={(e) => stateHandler(e)} {...credentials} />}
         />
 
         <Block
           header="Social Media"
           blurb="This section is all about your social media links"
-          form={<SocialMediaForm profileType="narrator" onChange={(e) => stateHandler(e)} {...credentials}/>}
+          form={<SocialMediaForm classNames="form-wide" profileType="narrator" onChange={(e) => stateHandler(e)} {...credentials}/>}
         />
         <Block
           header="Discoverability"
@@ -63,7 +63,7 @@ const EditProfile = () => {
         <Block
           header="Account"
           blurb="Edit the security and more private details of your account"
-          form={<SignupForm/>}
+          form={<SignupForm classNames="form-wide"/>}
         />
         <Block
           header="Become Prestigious"

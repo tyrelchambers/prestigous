@@ -2,9 +2,9 @@ import React from 'react'
 import { MainInput } from '../../inputs/Inputs'
 import FormWrapper from '../FormWrapper'
 
-const ProfileBasicsForm = ({firstName, lastName, username, onChange}) => {
+const ProfileBasicsForm = ({classNames, firstName, lastName, username, onChange}) => {
   return (
-    <FormWrapper>
+    <FormWrapper classNames={classNames}>
        <div className="field-group">
         <label htmlFor="firstName" className="form-label">First Name</label>
         <MainInput

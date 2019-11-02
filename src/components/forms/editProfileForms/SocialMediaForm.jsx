@@ -2,10 +2,10 @@ import React from 'react'
 import { MainInput } from '../../inputs/Inputs'
 import FormWrapper from '../FormWrapper'
 
-const SocialMediaForm = ({role, website, twitter, facebook, instagram, youtube, reddit, onChange}) => {
+const SocialMediaForm = ({role, website, twitter, facebook, instagram, youtube, reddit, onChange, classNames}) => {
 
   return (
-      <FormWrapper>
+      <FormWrapper classNames={classNames}>
         <div className="field-group">
           <label htmlFor="website" className="form-label">Website</label>
           <MainInput

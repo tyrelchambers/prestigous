@@ -4,7 +4,7 @@ import FormWrapper from './FormWrapper'
 
 const SignupForm = ({classNames, onChange}) => {
   return (
-    <FormWrapper>
+    <FormWrapper classNames={classNames}>
       <div className="field-group">
         <label htmlFor="email" className="form-label">Email</label>
         <MainInput
