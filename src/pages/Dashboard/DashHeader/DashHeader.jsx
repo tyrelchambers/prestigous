@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './DashHeader.scss'
 import '../Dashboard.scss'
 import {Link} from 'react-router-dom'
-const avatar = require('../../../assets/images/jack-finnigan-rriAI0nhcbc-unsplash.jpg');
-
+import { useAuth0 } from '../../../react-auth0-wrapper'
 const DashHeader = () => {
+  const [ u, setU ] = useState();
+  const { user } = useAuth0();
+
+  useEffect(() => {
+    setU({...user});
+  }, [])
+
+  if ( !u ) return null;
+
   return (
     <div className="dashboard-header center mt+">
-      <img src={avatar} alt="" className="dashboard-header-avatar"/>  
+      <img src={user.picture} alt="" className="dashboard-header-avatar"/>  
 
       <h2 className="dashboard-title mb-">imtyrelchambers</h2>    
       <p className="dashboard-subtitle ">Tyrel Chambers</p>

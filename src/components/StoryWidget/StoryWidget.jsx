@@ -3,6 +3,7 @@ import StoryCompact from '../StoryCompact/StoryCompact'
 import './StoryWidget.scss'
 import Axios from 'axios';
 import { getStoriesInProfile } from '../../api/users/stories';
+import FeaturedStory from '../../layouts/FeaturedStory/FeaturedStory';
 
 const StoryWidget = () => {
   const [ stories, setStories ] = useState([]);
@@ -15,12 +16,12 @@ const StoryWidget = () => {
     fn();
   }, []);
 
-  const storiesList = stories.map((x) => <StoryCompact key={x._id} id={x._id} title={x.title} author={x.author} created_at={x.created_at}/>);
+  const storiesList = stories.map((x) => <FeaturedStory key={x._id} story={x}/>);
 
   return (
     <div className="story-widget-wrapper">
       <h2 className="title">Recently Published Stories</h2>
-      <main className="story-widget-main d-f">
+      <main className="story-list-wrapper d-f">
         {storiesList}
       </main>
     </div>
