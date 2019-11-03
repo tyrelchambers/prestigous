@@ -18,19 +18,19 @@ const Navbar = () => {
         </li>
 
         <li className="navbar-item" >
-          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="#">
+          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/about">
             What is Prestigious?
           </NavLink>
         </li>
 
         <li className="navbar-item" >
-          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="#">
+          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/jobs">
             Jobs
           </NavLink>
         </li>
 
         <li className="navbar-item featured" >
-          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="#">
+          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/discover">
             Discover
           </NavLink>
         </li>

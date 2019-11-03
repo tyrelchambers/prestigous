@@ -25,7 +25,8 @@ const CreateStory = inject("UserStore", "StoryStore")(observer(({UserStore}) => 
   useEffect(() => {
     setDetails(UserStore.profile);
   }, [UserStore.profile]);
-
+  
+  // UNCOMMENT ME
   // useEffect(() => {
   //   autoSaveTimer();
   // }, [timer]);

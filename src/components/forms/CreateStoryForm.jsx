@@ -23,7 +23,7 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, prev
 
       <h3 className="mt+ subtitle ta-c thin">Story Details</h3>
       
-      <div className="bg-white p- br-8 bs">
+      <div className="bg-white p- br-8">
         <div className="field-group">
           <label htmlFor="title" className="form-label">Title</label>
           <MainInput
@@ -49,7 +49,7 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, prev
 
       <h3 className="mt+ subtitle ta-c thin">Meta Details</h3>
 
-      <div className="bg-white p- br-8 bs">
+      <div className="bg-white p- br-8">
         <div className="field-group">
           <label className="form-label">Upload Cover Photo</label>
           <FileUploader 
