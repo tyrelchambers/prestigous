@@ -1,0 +1,16 @@
+@import '../../colours.scss';
+
+.widget-username {
+  color: $grey2;
+  margin: 0;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.user-widget-wrapper {
+  .avatar {
+    width: 75px;
+    height: 75px;
+  }
+}

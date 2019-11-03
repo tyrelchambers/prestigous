@@ -25,3 +25,7 @@ export const MessageButton = ({icon, onClick, classNames}) => (
 export const SecondaryButton = ({text, icon, onClick, classNames}) => (
   <button type="button" className={`btn btn-minimal ${classNames}`} onClick={onClick}>{icon} {text}</button>
 )
+
+export const SmallButton = ({text, icon, onClick, classNames}) => (
+  <button type="button" className={`btn-small ${classNames}`} onClick={onClick}>{icon} {text}</button>
+)

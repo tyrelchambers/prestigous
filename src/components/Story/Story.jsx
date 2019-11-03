@@ -1,7 +1,8 @@
 import React from 'react'
 import './Story.scss'
+import UserWidget from '../UserWidget/UserWidget';
 
-const Story = ({story}) => {
+const Story = ({story , user}) => {
   if ( !story ) return null;
 
   const tags = story.tags ? story.tags.map(x => (
@@ -24,15 +25,20 @@ const Story = ({story}) => {
         </section>
 
         <hr className="hr"/>
+        <UserWidget
+            profile={story.profile_id}
+            profileImg={user.picture}
+          />
         <div className="d-f">
           <div className="d-f ai-c mr+">
             <i className="far fa-heart mr- subtitle"></i>
             <p className="subtitle">200 likes</p>
           </div>
 
-          <p className="subtitle">
-            200 views
-          </p>
+          <div className="d-f ai-c mr+">
+            <i className="far fa-heart mr- subtitle"></i>
+            <p className="subtitle">200 views</p>
+          </div>
         </div>
         <div className="mt- mb-">
           <h3 className="subtitle thin m0">Tags</h3>

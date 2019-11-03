@@ -2,6 +2,7 @@
 
 .btn {
   min-width: 206px;
+  width: 100%;
   height: 52px;
   border-radius: 5px;
   font-size: 1rem;
@@ -64,6 +65,20 @@
   margin: 0 0.5em;
 
   i {
+    color: white;
+  }
+}
+
+.btn-small {
+  background: transparent;
+  border: 1.5px solid $grey3;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  color: $grey3;
+  font-weight: bold;
+  margin: 0.5em;
+  &:hover {
+    background: $grey3;
     color: white;
   }
 }
