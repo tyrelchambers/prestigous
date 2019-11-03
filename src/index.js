@@ -111,7 +111,7 @@ ReactDOM.render(
           <PrivateRoute exact path="/create_story" component={CreateStory} />
           <PrivateRoute path="/edit_profile" component={EditProfile}/>
           <PrivateRoute exact path="/dashboard/inbox" component={Inbox} />
-          <PrivateRoute exact path="/story/:storyId" component={StoryPage} />
+          <PrivateRoute exact path="/story/:title" component={StoryPage} />
           <PrivateRoute exact path="/story/preview/:draftId" component={PreviewStory} />
           <PrivateRoute exact path="/profile/stories" component={ProfileStories} />
         </Switch>

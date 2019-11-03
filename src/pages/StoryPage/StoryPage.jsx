@@ -12,7 +12,7 @@ const StoryPage = ({match}) => {
   
   useEffect(() => {
     const fn = async () => {
-      const _ = await getStory(match.params.storyId);
+      const _ = await getStory(match.params.title);
       setStory({..._});
     }
     fn();

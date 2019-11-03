@@ -7,7 +7,7 @@ const Story = ({story , user}) => {
 
   const tags = story.tags ? story.tags.map(x => (
     <li>{x}</li>
-  )): null;
+  )) : null;
 
   const genre = story.genre ? story.genre.map(x => (
     <li>{x}</li>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const FeaturedStory = ({story}) => {
   return (
     <div className="featured-block-wrapper">
-      <Link to={`/story/${story._id}`}>
+      <Link to={`/story/${story.title}`}>
         <main className="featured-block-main">
           <img className="featured-block-thumb" src={story.bannerUrl} alt="Story thumbnail"/>
           <h5 className="featured-block-title m0">{story.title}</h5>
