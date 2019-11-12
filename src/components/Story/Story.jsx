@@ -18,7 +18,6 @@ const Story = ({story , user}) => {
       <main className="story-main">
         <div className="story-header">
           <h1 className="title ta-c ">{story.title}</h1>
-          <p className="subtitle ta-c">{story.username}</p>
         </div>
         <section className="story-body" dangerouslySetInnerHTML={{ __html: story.body }}>
           
