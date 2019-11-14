@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Story from '../../components/Story/Story'
 import Axios from 'axios';
+import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper';
 
 const PreviewStory = ({match}) => {
   const [ story, setStory ] = useState();
@@ -11,20 +12,18 @@ const PreviewStory = ({match}) => {
       withCredentials: true
     })
     .then(res =>{
-      console.log(res)  
       setStory(res.data)})
     .catch(console.log)
   }, []);
 
   return (
-    <div>
-      <h1>Hey</h1>
+    <DisplayWrapper header={true}>
       {story &&
         <Story 
           story={story}
         />
       }
-    </div>
+    </DisplayWrapper>
   )
 }
 

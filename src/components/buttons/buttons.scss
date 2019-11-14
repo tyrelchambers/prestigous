@@ -1,7 +1,7 @@
 @import '../../colours';
 
 .btn {
-  min-width: 206px;
+  min-width: 175px;
   width: 100%;
   height: 52px;
   border-radius: 5px;
@@ -9,13 +9,14 @@
   border: none;
   transition: all 0.1s ease;
   padding: 1em;
+  max-width: 216px;
+
 }
 
 .btn-primary {
   background-color: $green4;
   color: white;
   font-weight: bold;
-  max-width: 216px;
 }
 
 .btn-secondary {
@@ -23,7 +24,6 @@
   color: $green4;
   font-weight: 400;
   padding: 1em;
-  max-width: 216px;
 
   &:hover {
     box-shadow: 0px 2px 15px rgba($green4, 0.5);
@@ -37,7 +37,6 @@
   color: $danger;
   font-weight: 400;
   padding: 1em;
-  max-width: 216px;
 
   &:hover {
     box-shadow: 0px 2px 15px rgba($danger, 0.5);
@@ -85,4 +84,8 @@
     background: $grey3;
     color: white;
   }
+}
+
+.mx-w-216 {
+  max-width: 216px;
 }

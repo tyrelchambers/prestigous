@@ -7,9 +7,8 @@ import Axios from 'axios';
 import { toast } from 'react-toastify';
 import DashSubnav from '../../layouts/DashSubnav/DashSubnav';
 import {format} from 'date-fns';
-import { getSingleDraft } from '../../api/get';
 
-const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
+const EditStory = inject("UserStore", "StoryStore")(observer(({UserStore}) => {
   const [details, setDetails ] = useState({
     title: "",
     body: "",
@@ -21,21 +20,10 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
   });
   let pond = useRef(null);
 
-  const isEdit = new URLSearchParams(location.search);
-
   const [ timer, setTimer ] = useState(5000);
   
   useEffect(() => {
-
-    if (isEdit.get("edit") === "true") {
-      const fn = async () => {
-        const d = await getSingleDraft(`draftId=${isEdit.get("draftId")}`);
-        setDetails({...d.data});
-        console.log(details)
-      }
-
-      fn();
-    }
+    setDetails(UserStore.profile);
   }, [UserStore.profile]);
   
   // UNCOMMENT ME
@@ -134,4 +122,4 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
   )
 }));
 
-export default CreateStory
+export default EditStory

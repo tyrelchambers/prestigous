@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
 import FeaturedStory from '../../layouts/FeaturedStory/FeaturedStory'
 import FeaturedUser from '../../layouts/FeaturedUser/FeaturedUser'
@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import './Home.scss'
 import GenreList from '../../layouts/GenreList/GenreList'
 import { useAuth0 } from '../../react-auth0-wrapper'
+import { allStories } from '../../api/stories/stories'
+import { HomeStoryList } from '../../components/HomeStoryList/HomeStoryList'
 
 
 const narrator = {
@@ -24,9 +26,9 @@ const story = {
   bannerUrl: "https://images.unsplash.com/photo-1487023269153-8ab6d0e24173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80"
 }
 
-const Home = () => {
-  const { isAuthenticated } = useAuth0();
 
+
+const Home = (props) => {
   return (
     <DisplayWrapper header={true}>
       <div className="p+">
@@ -51,21 +53,7 @@ const Home = () => {
         </div>
 
         <main className="story-list-wrapper  pt- ">
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
-          <FeaturedStory story={story}/>
+          <HomeStoryList {...props}/>
         </main>
 
         <div className="container center d-f  jc-c mt+">

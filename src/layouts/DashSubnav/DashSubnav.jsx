@@ -35,6 +35,12 @@ const DashSubnav = () => {
             Requests
           </NavLink>
         </li>
+
+        <li>
+          <NavLink to="/profile/drafts" className="dash-subnav-item" activeClassName="active-subnav-item">
+            Drafts
+          </NavLink>
+        </li>
       </ul>
     </nav>
   )

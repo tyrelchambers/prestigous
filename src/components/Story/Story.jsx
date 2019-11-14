@@ -1,8 +1,11 @@
 import React from 'react'
 import './Story.scss'
 import UserWidget from '../UserWidget/UserWidget';
+import { useAuth0 } from '../../react-auth0-wrapper';
 
-const Story = ({story , user}) => {
+const Story = ({story}) => {
+  const { user } = useAuth0();
+
   if ( !story ) return null;
 
   const tags = story.tags ? story.tags.map(x => (

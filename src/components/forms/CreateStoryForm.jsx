@@ -17,10 +17,10 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, prev
             placeholder="Create your epic..."
             bounds="#editor"
             onChange={updateEditor}
+            value={state.body || ""}
           />
         </div>
       </div>
-
       <h3 className="mt+ subtitle ta-c thin">Story Details</h3>
       
       <div className="bg-white p- br-8">
@@ -90,7 +90,7 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, prev
         </div>
       </div>
 
-      <div className="d-f jc-sb mt+">
+      <div className="d-f jc-fe mt+">
         <SecondaryButton
           text="Preview Story"
           onClick={previewHandler}

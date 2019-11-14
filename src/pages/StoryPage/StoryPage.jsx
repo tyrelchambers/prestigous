@@ -8,7 +8,6 @@ import { useAuth0 } from '../../react-auth0-wrapper'
 const StoryPage = ({match}) => {
   const [ story, setStory ] = useState();
   const [ loading, setLoading ] = useState(true);
-  const { user } = useAuth0();
   
   useEffect(() => {
     const fn = async () => {
@@ -23,7 +22,7 @@ const StoryPage = ({match}) => {
 
   return (
     <DisplayWrapper header={true}>
-      <Story story={story} user={user}/>
+      <Story story={story}/>
     </DisplayWrapper>
   )
 }

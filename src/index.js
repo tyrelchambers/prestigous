@@ -22,6 +22,7 @@ import Axios from 'axios';
 import PreviewStory from './pages/PreviewStory/PreviewStory';
 import { getProfile, getCookieFromDb } from './api/users/profile';
 import ProfileStories from './pages/ProfileStories/ProfileStories';
+import { DraftsPage } from './pages/DraftsPage/DraftsPage';
 
 const stores = {
   UserStore,
@@ -114,6 +115,7 @@ ReactDOM.render(
           <PrivateRoute exact path="/story/:title" component={StoryPage} />
           <PrivateRoute exact path="/story/preview/:draftId" component={PreviewStory} />
           <PrivateRoute exact path="/profile/stories" component={ProfileStories} />
+          <PrivateRoute exact path="/profile/drafts" component={DraftsPage} />
         </Switch>
       </Router>
     </Provider>
