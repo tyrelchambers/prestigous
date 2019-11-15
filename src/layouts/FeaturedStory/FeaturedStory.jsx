@@ -1,10 +1,13 @@
 import React from 'react'
 import './FeaturedStory.scss'
 import { Link } from 'react-router-dom'
+import { deleteStory } from '../../api/delete';
 
-const FeaturedStory = ({story}) => {
+const FeaturedStory = ({story, classNames, deleteHandler}) => {
+  const isDashboard = window.location.pathname.match(/\/profile\/stories/);
+
   return (
-    <div className="featured-block-wrapper">
+    <div className={`featured-block-wrapper ${classNames ? classNames : ""}`}>
       <Link to={`/story/${story.title}`}>
         <main className="featured-block-main">
           <img className="featured-block-thumb" src={story.bannerUrl} alt="Story thumbnail"/>
@@ -19,6 +22,22 @@ const FeaturedStory = ({story}) => {
           </div>
         </main>
       </Link>
+
+     {isDashboard &&
+       <div className="featured-block-overlay">
+        <Link className="edit" to={`/create_story?edit=true&storyId=${story._id}`}>
+          <p>Edit</p>
+        </Link>
+
+        <div className="view">
+          <p>View</p>
+        </div>
+
+        <div className="delete" onClick={deleteHandler}>
+          <p>Delete</p>
+        </div>
+      </div>
+     }
     </div>
   )
 }

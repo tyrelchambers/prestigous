@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './StoryPage.scss'
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
 import Story from '../../components/Story/Story'
-import { getStory } from '../../api/users/stories'
-import { useAuth0 } from '../../react-auth0-wrapper'
+import { getStoryByTitle } from '../../api/users/stories'
 
 const StoryPage = ({match}) => {
   const [ story, setStory ] = useState();
@@ -11,7 +10,7 @@ const StoryPage = ({match}) => {
   
   useEffect(() => {
     const fn = async () => {
-      const _ = await getStory(match.params.title);
+      const _ = await getStoryByTitle(match.params.title);
       setStory({..._});
     }
     fn();

@@ -10,7 +10,13 @@ export const getStoriesInProfile = async () => {
 }
 
 export const getStory = async (id) => {
-  return await Axios.get(`${BACKEND_USERS}/api/story/${id}`, {withCredentials: true})
+  return await Axios.get(`${BACKEND_USERS}/api/story/id/${id}`, {withCredentials: true})
+    .then(res => res.data)
+    .catch(console.log);
+}
+
+export const getStoryByTitle = async (title) => {
+  return await Axios.get(`${BACKEND_USERS}/api/story/title/${title}`, {withCredentials: true})
     .then(res => res.data)
     .catch(console.log);
 }

@@ -30,11 +30,12 @@ export const DraftsPage = () => {
 
   const draftList = drafts.map((x, id) => 
     <li key={id} className="draft-item d-f jc-sb ai-c">
-      <Link to={`/create_story?edit=true&draftId=${x._id}`}>
+      <Link to={`/create_story?edit=true&draftId=${x._id}`} className="td-n d-f ai-c">
+        <i className="fas fa-long-arrow-alt-right mr-"></i>
         <p className="bold">{x.title}</p>
       </Link>
       <div className="draft-item-actions">
-        <i className="fas fa-trash danger-icon" onClick={() => deleteHandler(x._id)}></i>
+        <i className="fas fa-trash danger-icon" onClick={() => deleteHandler(x._id)} title="Delete draft"></i>
       </div>
     </li>
   )

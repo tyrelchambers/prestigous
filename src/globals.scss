@@ -94,4 +94,16 @@ p {
 
 .danger-icon {
   color: $danger;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: $danger;
+    color: white;
+  }
 }

@@ -2,10 +2,10 @@ import React from 'react'
 import FormWrapper from './FormWrapper'
 import { MainInput } from '../inputs/Inputs'
 import ReactQuill from 'react-quill';
-import { SubmitButton, SecondaryButton } from '../buttons/Buttons';
+import { SubmitButton, SecondaryButton, SmallButton } from '../buttons/Buttons';
 import FileUploader from '../FileUploader/FileUploader';
 
-const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, previewHandler, pondRef}) => {
+const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, previewHandler, pondRef, removeThumbnailHandler}) => {
 
   return (
     <FormWrapper classNames="form-wide">
@@ -51,10 +51,30 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, prev
 
       <div className="bg-white p- br-8">
         <div className="field-group">
-          <label className="form-label">Upload Cover Photo</label>
-          <FileUploader 
-            pondRef={pondRef}
-          />
+          {state.bannerUrl &&
+            <React.Fragment>
+              <label className="form-label">Current Cover Photo</label>
+              <img src={state.bannerUrl} style={{
+                objectFit: "contain"
+              }}/>
+              <div className="d-f jc-c mt-">
+                <SmallButton 
+                  text="Remove Thumbnail" 
+                  classNames="w-132px"
+                  onClick={removeThumbnailHandler}
+                />
+              </div>
+            </React.Fragment>
+          }
+
+          {!state.bannerUrl &&
+            <React.Fragment>
+              <label className="form-label">Upload Cover Photo</label>
+              <FileUploader 
+                pondRef={pondRef}
+              />
+            </React.Fragment>
+          }
         </div>
         <div className="field-group">
           <label htmlFor="theme" className="form-label">General Theme</label>

@@ -7,7 +7,7 @@ import Axios from 'axios';
 import { toast } from 'react-toastify';
 import DashSubnav from '../../layouts/DashSubnav/DashSubnav';
 import {format} from 'date-fns';
-import { getSingleDraft } from '../../api/get';
+import { getSingleDraft, getSingleStory } from '../../api/get';
 
 const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
   const [details, setDetails ] = useState({
@@ -21,20 +21,30 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
   });
   let pond = useRef(null);
 
-  const isEdit = new URLSearchParams(location.search);
+  const params = new URLSearchParams(location.search);
 
   const [ timer, setTimer ] = useState(5000);
   
   useEffect(() => {
 
-    if (isEdit.get("edit") === "true") {
-      const fn = async () => {
-        const d = await getSingleDraft(`draftId=${isEdit.get("draftId")}`);
-        setDetails({...d.data});
-        console.log(details)
+    if (params.get("edit") === "true") {
+      if ( params.has("draftId") ) {
+        const fn = async () => {
+          const d = await getSingleDraft(`draftId=${params.get("draftId")}`);
+          setDetails({...d.data});
+        }
+  
+        fn();
       }
 
-      fn();
+      if ( params.has("storyId") ) {
+        const fn = async () => {
+          const d = await getSingleStory(`storyId=${params.get("storyId")}`);
+          setDetails({...d.data});
+        }
+  
+        fn();
+      }
     }
   }, [UserStore.profile]);
   
@@ -43,14 +53,17 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
   //   autoSaveTimer();
   // }, [timer]);
 
-  const submitHandler = async (e) => {
+  const createStory = async (e) => {
     e.preventDefault();
     const {
       files,
       ...payload
     } = details;
-    
-    const bannerUrl = await processFiles();
+    let bannerUrl;
+
+    if ( pond.current.getFiles().length > 0 ) {
+      bannerUrl = await processFiles()
+    }
 
     Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/create`, {
       ...payload,
@@ -58,9 +71,44 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
     }, {
       withCredentials: true
     })
-    .then(res => toast.success(res.data.success))
+    .then(res => toast.success(res.data))
     .catch(console.log);
-    // window.location.href = "/dashboard";
+    window.location.href = "/dashboard";
+  }
+
+  const editStory = async (e) => {
+    e.preventDefault();
+    const {
+      files,
+      ...payload
+    } = details;
+    let bannerUrl;
+
+    const storyId = params.get("storyId");
+    
+    if ( !bannerUrl && pond.current.getFiles().length > 0 ) {
+      bannerUrl = await processFiles()
+    }
+    
+    Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/edit`, {
+      ...payload,
+      bannerUrl,
+      id: storyId
+    }, {
+      withCredentials: true
+    })
+    .then(res => toast.success(res.data))
+    .catch(console.log);
+  }
+
+  const submitHandler = async (e) => {
+   if ( params.has("edit") ) {
+     return editStory(e);
+   }
+
+   if ( !params.has("edit") ) {
+    return createStory(e);
+   }
   }
 
   const stateHandler = (e) => {
@@ -112,6 +160,10 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
     
   }
 
+  const removeThumbnailHandler = () => {
+    setDetails({...details, bannerUrl: ""});
+  }
+
   return (
     <DisplayWrapper 
       header={true}
@@ -128,6 +180,7 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
           updateEditor={updateEditorHandler}
           previewHandler={getDraft}
           pondRef={pond}
+          removeThumbnailHandler={removeThumbnailHandler}
         />
       </div>
     </DisplayWrapper>

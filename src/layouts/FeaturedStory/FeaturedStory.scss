@@ -1,6 +1,7 @@
 @import '../../colours.scss';
 
 .featured-block-wrapper {
+  position: relative;
   width: 350px;
   height: 280px;
   background-color: #fff;
@@ -29,3 +30,92 @@
 .featured-block-title {
   color: $grey2;
 }
+
+.dashboard-story {
+  position: relative;
+  &:after {
+    content: "";
+    display: none;
+    background: rgb(16,42,67);
+    background: linear-gradient(45deg, rgba(16,42,67,0.75) 0%, rgba(122,14,204,0.75) 100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 8px;
+    z-index: 1;
+  }
+
+  &:hover {
+    &:after {
+      display: block;
+    }
+    
+    .featured-block-overlay {
+      display: flex;
+    }
+  }
+}
+
+.featured-block-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left:0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  
+  .edit,
+  .delete {
+    width: 60px;
+    height: 60px;
+    box-shadow: 0px 2px 15px rgba(black, 0.3);
+    font-size: 0.8rem;
+  }
+
+  .edit,
+  .view,
+  .delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  .edit {
+    border: 2px solid $green5;
+    color: $green5;
+
+    &:hover {
+      background: $green5;
+      color: white;
+    }
+  }
+
+  .delete {
+    border: 2px solid $danger;
+    color: $danger;
+
+    &:hover {
+      background: $danger;
+      color: white;
+    }
+  }
+
+  .view {
+    background: white;
+    width: 90px;
+    height: 90px;
+    color: $grey3;
+    &:hover {
+      background: $grey10;
+    }
+  }
+}
+
