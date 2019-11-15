@@ -19,6 +19,8 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
     draftId: "",
     bannerUrl: ""
   });
+  const [ loading, setLoading ] = useState(true);
+
   let pond = useRef(null);
 
   const params = new URLSearchParams(location.search);
@@ -32,6 +34,7 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
         const fn = async () => {
           const d = await getSingleDraft(`draftId=${params.get("draftId")}`);
           setDetails({...d.data});
+          setLoading(false);
         }
   
         fn();
@@ -41,12 +44,17 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
         const fn = async () => {
           const d = await getSingleStory(`storyId=${params.get("storyId")}`);
           setDetails({...d.data});
+          setLoading(false);
         }
   
         fn();
       }
     }
-  }, [UserStore.profile]);
+    return setLoading(true);
+
+  }, []);
+
+  if ( loading ) return null;
   
   // UNCOMMENT ME
   // useEffect(() => {
@@ -82,12 +90,14 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
       files,
       ...payload
     } = details;
-    let bannerUrl;
+    let bannerUrl = details.bannerUrl;
 
     const storyId = params.get("storyId");
     
-    if ( !bannerUrl && pond.current.getFiles().length > 0 ) {
-      bannerUrl = await processFiles()
+    if ( !bannerUrl ) {
+      if ( pond.current.getFiles().length > 0 ) {
+        bannerUrl = await processFiles()
+      }
     }
     
     Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/edit`, {

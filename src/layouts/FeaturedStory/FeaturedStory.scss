@@ -35,7 +35,7 @@
   position: relative;
   &:after {
     content: "";
-    display: none;
+    display: block;
     background: rgb(16,42,67);
     background: linear-gradient(45deg, rgba(16,42,67,0.75) 0%, rgba(122,14,204,0.75) 100%);
     position: absolute;
@@ -45,15 +45,17 @@
     left: 0;
     border-radius: 8px;
     z-index: 1;
+    opacity: 0;
+    transition: all 0.2s ease;
   }
 
   &:hover {
     &:after {
-      display: block;
+      opacity: 1;
     }
     
     .featured-block-overlay {
-      display: flex;
+      opacity: 1;
     }
   }
 }
@@ -65,10 +67,11 @@
   right: 0;
   bottom: 0;
   left:0;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
-  
+  opacity: 0;
+  transition: all 0.2s ease;
   .edit,
   .delete {
     width: 60px;

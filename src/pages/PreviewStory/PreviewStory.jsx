@@ -8,7 +8,7 @@ const PreviewStory = ({match}) => {
   const {draftId} = match.params;
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_BACKEND_USERS}/api/story/draft/${draftId}`, {
+    Axios.get(`${process.env.REACT_APP_BACKEND_USERS}/api/story/draft/id/${draftId}`, {
       withCredentials: true
     })
     .then(res =>{

@@ -7,7 +7,7 @@ export const getDrafts = () => {
 }
 
 export const getSingleDraft = (draftId) => {
-  return Axios.get(`${BACKEND}/api/story/draft/${draftId}`, {
+  return Axios.get(`${BACKEND}/api/story/draft/id/${draftId}`, {
     withCredentials: true
   });
 }
