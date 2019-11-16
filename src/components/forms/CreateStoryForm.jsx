@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FormWrapper from './FormWrapper'
 import { MainInput } from '../inputs/Inputs'
 import ReactQuill from 'react-quill';
 import { SubmitButton, SecondaryButton, SmallButton, NoStyleButton } from '../buttons/Buttons';
 import FileUploader from '../FileUploader/FileUploader';
+import LoaderSmall from '../Loaders/LoaderSmall/LoaderSmall';
 
 const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, previewHandler, pondRef, removeThumbnailHandler, saveDrafthandler}) => {
+  const [ loading, setLoading ] = useState(false);
+
+  const ButtonState = () => 
+    !loading ? 
+      <SubmitButton
+        icon={<i className="fas fa-check mr-"></i>}
+        text="Create Story"
+        onClick={(e) => {
+          submitHandler(e);
+          setLoading(true);
+        }}
+      /> :
+      <SubmitButton
+        icon={<LoaderSmall/>}
+        classNames="pos-r no-padding disabled"
+        disabled={true}
+      /> 
 
   return (
     <FormWrapper classNames="form-wide">
@@ -122,16 +140,14 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, prev
             classNames="mr-"
           />
 
-          <SubmitButton
-            icon={<i className="fas fa-check mr-"></i>}
-            text="Create Story"
-            onClick={submitHandler}
-          /> 
+          <ButtonState />
         </div>
       </div>
     </FormWrapper>
   )
 }
+
+
 
 
 

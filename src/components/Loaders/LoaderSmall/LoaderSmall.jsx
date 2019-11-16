@@ -3,7 +3,7 @@ import './LoaderSmall.scss'
 
 const LoaderSmall = () => {
   return (
-    <div className="loader">Loading...</div>
+    <div className="loader"></div>
   )
 }
 

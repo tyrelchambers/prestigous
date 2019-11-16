@@ -98,3 +98,8 @@
   font-size: 1rem;
   white-space: nowrap;
 }
+
+.btn.disabled {
+  background-color: $grey7;
+  cursor: not-allowed;
+}

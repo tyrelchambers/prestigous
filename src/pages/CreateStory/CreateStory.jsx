@@ -111,6 +111,8 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
     })
     .then(res => toast.success(res.data))
     .catch(console.log);
+    window.location.href = "/dashboard";
+
   }
 
   const editDraft = async (e) => {
@@ -138,6 +140,8 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
     })
     .then(res => toast.success(res.data))
     .catch(console.log);
+    window.location.href = "/dashboard";
+
   }
 
   const submitHandler = async (e) => {
