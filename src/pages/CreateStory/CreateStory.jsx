@@ -49,9 +49,11 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
   
         fn();
       }
-    }
-    return setLoading(true);
 
+    }
+    return () => {
+      setLoading(true);
+    }
   }, []);
 
   if ( loading ) return null;
@@ -111,14 +113,45 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
     .catch(console.log);
   }
 
-  const submitHandler = async (e) => {
-   if ( params.has("edit") ) {
-     return editStory(e);
-   }
+  const editDraft = async (e) => {
+    e.preventDefault();
+    const {
+      files,
+      ...payload
+    } = details;
+    let bannerUrl = details.bannerUrl;
 
-   if ( !params.has("edit") ) {
-    return createStory(e);
-   }
+    const draftId = params.get("draftId");
+    
+    if ( !bannerUrl ) {
+      if ( pond.current.getFiles().length > 0 ) {
+        bannerUrl = await processFiles()
+      }
+    }
+    
+    Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/draft/edit`, {
+      ...payload,
+      bannerUrl,
+      id: draftId
+    }, {
+      withCredentials: true
+    })
+    .then(res => toast.success(res.data))
+    .catch(console.log);
+  }
+
+  const submitHandler = async (e) => {
+    if ( params.has("edit") && params.has("storyId")) {
+      return editStory(e);
+    }
+
+    if ( !params.has("edit") ) {
+      return createStory(e);
+    }
+
+    if ( params.has("edit") && params.has("draftId")) {
+      return editDraft(e);
+    }
   }
 
   const stateHandler = (e) => {
@@ -151,7 +184,7 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
   }
 
   const previewHandler = async () => {
-    return await Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/draft/save`, {
+    return await Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/draft/save`, {
       ...details
     }, {
       withCredentials: true
@@ -191,6 +224,7 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
           previewHandler={getDraft}
           pondRef={pond}
           removeThumbnailHandler={removeThumbnailHandler}
+          saveDrafthandler={previewHandler}
         />
       </div>
     </DisplayWrapper>

@@ -2,10 +2,10 @@ import React from 'react'
 import FormWrapper from './FormWrapper'
 import { MainInput } from '../inputs/Inputs'
 import ReactQuill from 'react-quill';
-import { SubmitButton, SecondaryButton, SmallButton } from '../buttons/Buttons';
+import { SubmitButton, SecondaryButton, SmallButton, NoStyleButton } from '../buttons/Buttons';
 import FileUploader from '../FileUploader/FileUploader';
 
-const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, previewHandler, pondRef, removeThumbnailHandler}) => {
+const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, previewHandler, pondRef, removeThumbnailHandler, saveDrafthandler}) => {
 
   return (
     <FormWrapper classNames="form-wide">
@@ -110,18 +110,24 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, prev
         </div>
       </div>
 
-      <div className="d-f jc-fe mt+">
-        <SecondaryButton
-          text="Preview Story"
-          onClick={previewHandler}
-          classNames="mr-"
+      <div className="d-f jc-sb mt+">
+        <NoStyleButton
+          text="Save Draft"
+          onClick={saveDrafthandler}
         />
+        <div className="d-f ai-c">
+          <NoStyleButton
+            text="Preview Story"
+            onClick={previewHandler}
+            classNames="mr-"
+          />
 
-        <SubmitButton
-          icon={<i className="fas fa-check mr-"></i>}
-          text="Submit Story"
-          onClick={submitHandler}
-        /> 
+          <SubmitButton
+            icon={<i className="fas fa-check mr-"></i>}
+            text="Create Story"
+            onClick={submitHandler}
+          /> 
+        </div>
       </div>
     </FormWrapper>
   )

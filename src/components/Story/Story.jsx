@@ -8,12 +8,12 @@ const Story = ({story}) => {
 
   if ( !story ) return null;
 
-  const tags = story.tags ? story.tags.map(x => (
-    <li>{x}</li>
+  const tags = story.tags ? story.tags.map((x, id) => (
+    <li key={id}>{x}</li>
   )) : null;
 
-  const genre = story.genre ? story.genre.map(x => (
-    <li>{x}</li>
+  const genre = story.genre ? story.genre.map((x, id) => (
+    <li key={id}>{x}</li>
   )) : null;
 
   return (

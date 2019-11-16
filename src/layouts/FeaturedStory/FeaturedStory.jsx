@@ -29,9 +29,9 @@ const FeaturedStory = ({story, classNames, deleteHandler}) => {
           <p>Edit</p>
         </Link>
 
-        <div className="view">
+        <Link className="view" to={`/story/${story.title}`}>
           <p>View</p>
-        </div>
+        </Link>
 
         <div className="delete" onClick={deleteHandler}>
           <p>Delete</p>

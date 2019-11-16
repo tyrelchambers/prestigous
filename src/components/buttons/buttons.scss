@@ -89,3 +89,12 @@
 .mx-w-216 {
   max-width: 216px;
 }
+
+.btn-no-style {
+  background: transparent;
+  color: $grey4;
+  font-weight: bold;
+  border: none;
+  font-size: 1rem;
+  white-space: nowrap;
+}

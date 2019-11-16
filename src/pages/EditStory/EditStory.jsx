@@ -81,7 +81,7 @@ const EditStory = inject("UserStore", "StoryStore")(observer(({UserStore}) => {
   }
 
   const previewHandler = async () => {
-    return await Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/story/draft/save`, {
+    return await Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/draft/save`, {
       ...details
     }, {
       withCredentials: true
