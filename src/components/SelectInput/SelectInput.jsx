@@ -1,16 +1,19 @@
 import React from 'react'
 import './SelectInput.scss'
+import { Link } from 'react-router-dom'
 
-const SelectInput = ({label, data, options, setOptions, prop}) => {
+const BASEURL = '/discover?theme='
 
-  // const selectItems = data.map(x => (
-  //   <div className="select-item" data-value={x.value} data-label={x.label} key={x.label}>
-  //     {x.label}
-  //   </div>
-  // ));
+const SelectInput = ({label, data}) => {
+
+  const selectItems = data.map(x => (
+    <Link to={`${BASEURL}${x.value}`} className="select-item" data-value={x.value} data-label={x.label} key={x.label}>
+      {x.label}
+    </Link>
+  ));
 
   return (
-    <div className="select d-f ai-c" >
+    <div className="select d-f ai-c"onClick={dropdownToggle} >
       <span 
         className="select-label d-f jc-sb ai-c w-100pr"
         id="selectLabel"
@@ -20,7 +23,7 @@ const SelectInput = ({label, data, options, setOptions, prop}) => {
       </span>
 
       <div className="select-dropdown" id="dropdownList">
-        {/* {selectItems} */}
+        {selectItems}
       </div>
     </div>
   )
@@ -32,27 +35,6 @@ const dropdownToggle = (e) => {
   
   parent.classList.toggle('expanded-title');
   list.classList.toggle('expanded-select');
-}
-
-const setHandler = (e, options, set, prop) => {
-  const value = e.target.getAttribute('data-value');
-  const label = e.target.getAttribute('data-label');
-  changeLabel(e, label)
-  return set({...options, [prop]: value});
-}
-
-const resetStyles = (e) => {
-  const parent = e.target.closest('.select');
-  const list = parent.querySelector("#dropdownList");
-  
-  parent.classList.remove('expanded-title');
-  list.classList.remove('expanded-select');
-}
-
-const changeLabel = (e, value) => {
-  const parent = e.target.closest('.select');
-  const label = parent.querySelector('#label');
-  label.innerHTML = value;
 }
 
 export default SelectInput

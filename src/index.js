@@ -23,6 +23,7 @@ import PreviewStory from './pages/PreviewStory/PreviewStory';
 import { getProfile, getCookieFromDb } from './api/users/profile';
 import ProfileStories from './pages/ProfileStories/ProfileStories';
 import { DraftsPage } from './pages/DraftsPage/DraftsPage';
+import { DiscoverPage } from './pages/DiscoverPage/DiscoverPage';
 
 const stores = {
   UserStore,
@@ -107,6 +108,7 @@ ReactDOM.render(
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/story" component={StoryPage}/>
           <Route path="/callback" component={CallbackRoute}/>
+          <Route path="/discover" component={DiscoverPage} />
           <PrivateRoute path="/create_profile" component={CreateProfile} />
           <PrivateRoute exact path="/dashboard" component={DashIndex}/>
           <PrivateRoute exact path="/create_story" component={CreateStory} />

@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import FormWrapper from './FormWrapper'
 import { MainInput } from '../inputs/Inputs'
 import ReactQuill from 'react-quill';
-import { SubmitButton, SecondaryButton, SmallButton, NoStyleButton } from '../buttons/Buttons';
+import { SubmitButton, SmallButton, NoStyleButton } from '../buttons/Buttons';
 import FileUploader from '../FileUploader/FileUploader';
 import LoaderSmall from '../Loaders/LoaderSmall/LoaderSmall';
+import genres from '../StoryFilters/genreOptions';
 
 const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, previewHandler, pondRef, removeThumbnailHandler, saveDrafthandler}) => {
   const [ loading, setLoading ] = useState(false);
@@ -24,6 +25,35 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, prev
         classNames="pos-r no-padding disabled"
         disabled={true}
       /> 
+
+  const dropdownToggle = (e) => {
+    const parent = e.target.closest('.select');
+    const list = parent.querySelector("#dropdownList");
+    
+    parent.classList.toggle('expanded-title');
+    list.classList.toggle('expanded-select');
+  }
+
+  const selectItems = genres.map(x => (
+    <div className="select-item" value={x.value} data-label={x.label} key={x.label} name="theme" onClick={(e) => {
+      const evt = {
+        target: {
+          name: "theme",
+          value: x.value
+        }
+      }
+      stateHandler(evt);
+      changeLabel(e, x.label);
+    }}>
+      {x.label}
+    </div>
+  ));
+
+  const changeLabel = (e, value) => {
+    const parent = e.target.closest('.select');
+    const label = parent.querySelector('#label');
+    label.innerHTML = value;
+  }
 
   return (
     <FormWrapper classNames="form-wide">
@@ -95,20 +125,26 @@ const CreateStoryForm = ({state, stateHandler, submitHandler, updateEditor, prev
           }
         </div>
         <div className="field-group">
-          <label htmlFor="theme" className="form-label">General Theme</label>
-          <MainInput
-            placeholder="Dark Web, Horror, Feel Good, Wholesome, Romantic, etc. (Up to 3)"
-            name="theme"
-            type="text"
-            onChange={stateHandler}
-            value={state.theme}
-          />
+          <label htmlFor="tags" className="form-label">Theme</label>
+          <div className="select d-f ai-c"onClick={dropdownToggle} >
+            <span 
+              className="select-label d-f jc-sb ai-c w-100pr"
+              id="selectLabel"
+            >
+              <p id="label">Themes</p>
+              <i className="fas fa-chevron-down"></i>  
+            </span>
+
+            <div className="select-dropdown" id="dropdownList">
+              {selectItems}
+            </div>
+          </div>
         </div>
 
         <div className="field-group">
           <label htmlFor="tags" className="form-label">Tags</label>
           <MainInput
-            placeholder="Press 'Enter' to submit a tag"
+            placeholder="Comma separated values"
             name="tags"
             type="text"
             onChange={stateHandler}
