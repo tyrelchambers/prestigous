@@ -23,13 +23,7 @@ const Navbar = () => {
           </NavLink>
         </li>
 
-        <li className="navbar-item" >
-          <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/jobs">
-            Jobs
-          </NavLink>
-        </li>
-
-        <li className="navbar-item featured" >
+        <li className="navbar-item featured ml-" >
           <NavLink activeClassName="active-nav-item" isActive={activeRouterHandler} to="/discover">
             Discover
           </NavLink>

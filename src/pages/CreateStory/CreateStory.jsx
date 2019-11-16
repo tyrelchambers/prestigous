@@ -49,10 +49,8 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
   
         fn();
       }
-
-    }
-    return () => {
-      setLoading(true);
+    } else {
+      setLoading(false);
     }
   }, []);
 

@@ -66,16 +66,6 @@ const EditProfile = () => {
           form={<SignupForm classNames="form-wide"/>}
         />
         <Block
-          header="Become Prestigious"
-          blurb="View our plans for becoming a Prestigious member"
-          form={<DashButton text="View Plans" />}
-        />
-        <Block
-          header="Partner Program"
-          blurb="Request a review (if you haven't), to become a Prestigious Partner"
-          form={<DashButton text="Request Review" />}
-        />
-        <Block
           header="Cancellation"
           blurb="Cancel your account in this section"
           form={<DangerButton text="Delete Account" icon={<i className="fas fa-skull mr-"></i>}/>}
