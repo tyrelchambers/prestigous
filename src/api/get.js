@@ -13,7 +13,6 @@ export const getSingleDraft = (draftId) => {
 }
 
 export const getSingleStory = (storyId) => {
-  return Axios.get(`${BACKEND}/api/story/id/${storyId}`, {
-    withCredentials: true
-  });
+  return Axios.get(`${BACKEND}/api/story/id/${storyId}`);
 }
+

@@ -143,18 +143,17 @@ const CreateStory = inject("UserStore")(observer(({UserStore, location}) => {
   }
 
   const submitHandler = async (e) => {
-    console.log(details)
-    // if ( params.has("edit") && params.has("storyId")) {
-    //   return editStory(e);
-    // }
+    if ( params.has("edit") && params.has("storyId")) {
+      return editStory(e);
+    }
 
-    // if ( !params.has("edit") ) {
-    //   return createStory(e);
-    // }
+    if ( !params.has("edit") ) {
+      return createStory(e);
+    }
 
-    // if ( params.has("edit") && params.has("draftId")) {
-    //   return editDraft(e);
-    // }
+    if ( params.has("edit") && params.has("draftId")) {
+      return editDraft(e);
+    }
   }
 
   const stateHandler = (e) => {

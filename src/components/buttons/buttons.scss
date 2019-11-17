@@ -80,6 +80,7 @@
   color: $grey3;
   font-weight: bold;
   margin: 0.5em;
+  white-space: nowrap;
   &:hover {
     background: $grey3;
     color: white;

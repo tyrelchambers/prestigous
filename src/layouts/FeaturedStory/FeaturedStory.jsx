@@ -7,7 +7,7 @@ const FeaturedStory = ({story, classNames, deleteHandler}) => {
   const isDashboard = window.location.pathname.match(/\/profile\/stories/);
 
   return (
-    <div className={`featured-block-wrapper ${classNames ? classNames : ""}`}>
+    <div className={`featured-block-wrapper m- ${classNames ? classNames : ""}`}>
       <Link to={`/story/${story.title}`}>
         <main className="featured-block-main">
           <img className="featured-block-thumb" src={story.bannerUrl} alt="Story thumbnail"/>
