@@ -16,7 +16,7 @@ const FeaturedStory = ({story, classNames, deleteHandler}) => {
             <p className="featured-block-subtitle m0">{story.username}</p>
 
             <div className="d-f">
-              <p className="featured-block-meta m0">{story.likes} likes</p>
+              <p className="featured-block-meta m0">{story.likedBy.length} likes</p>
               <p className="featured-block-meta m0">{story.views} views</p>
             </div>
           </div>

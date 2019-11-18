@@ -2,9 +2,10 @@ import React from 'react'
 import './Story.scss'
 import UserWidget from '../UserWidget/UserWidget';
 import { useAuth0 } from '../../react-auth0-wrapper';
+import { StorySocials } from '../StorySocials/StorySocials';
 
 const Story = ({story}) => {
-  const { user } = useAuth0();
+  const { user, profile } = useAuth0();
 
   if ( !story ) return null;
 
@@ -20,12 +21,19 @@ const Story = ({story}) => {
     <div className="story-wrapper">
       <main className="story-main">
         <div className="story-header">
+          
           <h1 className="title ta-c ">{story.title}</h1>
         </div>
         <section className="story-body" dangerouslySetInnerHTML={{ __html: story.body }}>
           
         </section>
 
+        <div className="mt- mb-">
+          <StorySocials
+            story={story}
+            profile={profile}
+          />
+        </div>
         <hr className="hr"/>
         <UserWidget
             profile={story.profile_id}
@@ -33,13 +41,11 @@ const Story = ({story}) => {
           />
         <div className="d-f">
           <div className="d-f ai-c mr+">
-            <i className="far fa-heart mr- subtitle"></i>
-            <p className="subtitle">200 likes</p>
+            <p className="subtitle">{story.likedBy.length} likes</p>
           </div>
 
           <div className="d-f ai-c mr+">
-            <i className="far fa-heart mr- subtitle"></i>
-            <p className="subtitle">200 views</p>
+            <p className="subtitle">{story.views} views</p>
           </div>
         </div>
         <div className="mt- mb-">
@@ -56,8 +62,12 @@ const Story = ({story}) => {
           </ul>
         </div>
         
-        <h3 className="subtitle thin mt- mb-">Notes</h3>
-        <p className="subtitle">{story.notes}</p>
+       {story.notes &&
+        <React.Fragment>
+          <h3 className="subtitle thin mt- mb-">Notes</h3>
+          <p className="subtitle">{story.notes}</p>
+        </React.Fragment>
+       }
 
         <hr className="hr"/>
       </main>

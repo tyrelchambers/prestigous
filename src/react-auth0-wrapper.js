@@ -20,7 +20,7 @@ export const Auth0Provider = observer(({
   const [auth0Client, setAuth0] = useState();
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
-
+  const [ profile, setProfile ] = useState();
   useEffect(() => {
     const initAuth0 = async () => {
       const auth0FromHook = await createAuth0Client(initOptions);
@@ -37,8 +37,9 @@ export const Auth0Provider = observer(({
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
-        getProfile().then(res => UserStore.setProfile(res));
+        const p = await getProfile();
         getCookieFromDb(user).then(res => Cookies.set('sid', res, {expires: 1}));
+        setProfile(p);
         setUser(user);
       }
 
@@ -75,6 +76,7 @@ export const Auth0Provider = observer(({
       value={{
         isAuthenticated,
         user,
+        profile,
         loading,
         popupOpen,
         loginWithPopup,

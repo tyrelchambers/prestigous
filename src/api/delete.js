@@ -9,3 +9,4 @@ export const deleteDraft = (id) => {
 export const deleteStory = (id) => {
   return Axios.delete(`${BACKEND}/api/story/id/${id}`, {withCredentials: true}).then(console.log);
 }
+
