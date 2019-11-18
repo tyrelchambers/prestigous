@@ -6,12 +6,32 @@ export const StorySocials = ({story, profile}) => {
   const [ liked, setLiked ] = useState(story.likedBy.includes(profile._id));
 
   return (
-    <div className="story-socials-wrapper">
+    <div className="story-socials-wrapper d-f ai-c">
       <Heart 
         story={story}
         liked={liked}
         setLiked={setLiked}
       />
+
+      <div className="d-f fxd-c jc-c ai-c social-item">
+        <i className="fab fa-twitter"></i>
+        <p className="tt-u m0">Share</p>
+      </div>
+
+      <div className="d-f fxd-c jc-c ai-c social-item">
+        <i className="fab fa-facebook"></i>
+        <p className="tt-u m0">Share</p>
+      </div>
+
+      <div className="d-f fxd-c jc-c ai-c social-item">
+        <i className="fas fa-comment"></i>
+        <p className="tt-u m0">Message</p>
+      </div>
+
+      <div className="d-f fxd-c jc-c ai-c social-item">
+        <i className="fas fa-envelope"></i>
+        <p className="tt-u m0">Send</p>
+      </div>
     </div>
   )
 }
