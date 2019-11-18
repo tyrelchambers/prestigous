@@ -14,7 +14,7 @@ const StoryFilters = () => {
   return (
     <div className="d-f ai-c story-filters-wrapper">
       <hr className="hr"/>
-      <div className="d-f">
+      <div className="d-f ai-c">
         <SelectInput
           label="Published"
           data={genres}
@@ -27,10 +27,7 @@ const StoryFilters = () => {
           label="Theme"
           data={genres}
         />
-        <NoStyleButton 
-          text="Clear filters"
-          onClick={clearParams}
-        />
+        <p className="thin whs-nw subtitle" onClick={clearParams}>Clear Filters</p>
       </div>
     </div>
   )

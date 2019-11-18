@@ -6,7 +6,7 @@ export const StorySocials = ({story, profile}) => {
   const [ liked, setLiked ] = useState(story.likedBy.includes(profile._id));
 
   return (
-    <div className="story-socials-wrapper d-f ai-c">
+    <div className="story-socials-wrapper d-f ai-c mt+">
       <Heart 
         story={story}
         liked={liked}

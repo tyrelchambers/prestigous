@@ -36,8 +36,7 @@
   &:after {
     content: "";
     display: block;
-    background: rgb(16,42,67);
-    background: linear-gradient(45deg, rgba(16,42,67,0.75) 0%, rgba(122,14,204,0.75) 100%);
+    background: rgba(16,42,67, 0.9);
     position: absolute;
     top: 0;
     right: 0;

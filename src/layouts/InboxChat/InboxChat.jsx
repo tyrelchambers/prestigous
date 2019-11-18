@@ -30,7 +30,7 @@ const InboxChat = ({data}) => {
     )
   }
 
-  const replies = data.messages.map(x => x.from === currentUser ? <OtherReply data={x}/> : <PersonalReply data={x}/>)
+  const replies = data.messages.map((x, id) => x.from === currentUser ? <OtherReply key={id} data={x}/> : <PersonalReply key={id} data={x}/>)
 
 
   return (

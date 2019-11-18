@@ -3,8 +3,8 @@ import './InboxMessageList.scss'
 
 const InboxMessageList = ({data}) => {
   
-  const messagesItems = data.map(x => (
-    <div className="inbox-item">
+  const messagesItems = data.map((x, id) => (
+    <div className="inbox-item" key={id}>
       <div className=" m-">
         <img src={x.avatar} alt="Avatar thumbnail" className="avatar-small"/>
       </div>
