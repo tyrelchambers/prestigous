@@ -37,9 +37,7 @@ export const Auth0Provider = observer(({
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
-        const p = await getProfile();
-        getCookieFromDb(user).then(res => Cookies.set('sid', res, {expires: 1}));
-        setProfile(p);
+        
         setUser(user);
       }
 

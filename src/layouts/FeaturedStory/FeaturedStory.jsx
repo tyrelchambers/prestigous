@@ -5,7 +5,7 @@ import { deleteStory } from '../../api/delete';
 
 const FeaturedStory = ({story, classNames, deleteHandler}) => {
   const isDashboard = window.location.pathname.match(/\/profile\/stories/);
-
+  console.log(story)
   return (
     <div className={`featured-block-wrapper m- ${classNames ? classNames : ""}`}>
       <Link to={`/story/${story.title}`}>

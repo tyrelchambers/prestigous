@@ -1,178 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DisplayWrapper from '../../layouts/DisplayWrapper/DisplayWrapper'
 import InboxMessageList from '../../layouts/InboxMessageList/InboxMessageList';
 import InboxChat from '../../layouts/InboxChat/InboxChat';
 import DashSubnav from '../../layouts/DashSubnav/DashSubnav';
 import './Inbox.scss'
+import { DashButton } from '../../components/buttons/Buttons';
+import { Link } from 'react-router-dom';
+import { NewMessage } from '../../components/NewMessage/NewMessage';
 
-const messages = [
-  {
-    from: 'StoriesAfterMidnight',
-    subject: "A test subject",
-    messages: [
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist.",
-        avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      },
-      {
-        from: 'SomebroDude',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist.",
-        avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+const Inbox = ({location}) => {
+  const [ messages, setMessages ] = useState();
 
-      }
-    ],
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-  },
-  {
-    from: 'StoriesAfterMidnight',
-    subject: "A test subject",
-    messages: [
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'SomebroDude',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      }
-    ],
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-  },
-  {
-    from: 'StoriesAfterMidnight',
-    subject: "A test subject",
-    messages: [
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'SomebroDude',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      }
-    ],
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-  },
-  {
-    from: 'StoriesAfterMidnight',
-    subject: "A test subject",
-    messages: [
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'SomebroDude',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      }
-    ],
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-  },
-  {
-    from: 'StoriesAfterMidnight',
-    subject: "A test subject",
-    messages: [
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'SomebroDude',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      }
-    ],
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-  },
-  {
-    from: 'StoriesAfterMidnight',
-    subject: "A test subject",
-    messages: [
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'SomebroDude',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      }
-    ],
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-  },
-  {
-    from: 'StoriesAfterMidnight',
-    subject: "A test subject",
-    messages: [
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'SomebroDude',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      }
-    ],
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-  },
-  {
-    from: 'StoriesAfterMidnight',
-    subject: "A test subject",
-    messages: [
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'SomebroDude',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      },
-      {
-        from: 'StoriesAfterMidnight',
-        message: "Lorem ipsum dolor amet gluten-free cardigan la croix waistcoat hella, intelligentsia everyday carry neutra bespoke. Coloring book 3 wolf moon yr, kombucha poutine kogi freegan try-hard raw denim man bun kale chips narwhal trust fund wolf. Salvia neutra fixie, jean shorts yr shabby chic offal forage mumblecore beard la croix. Blog cray meggings, mixtape williamsburg subway tile you probably haven't heard of them listicle kickstarter 8-bit vexillologist."
-      }
-    ],
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+  const params = new URLSearchParams(location.search);
+  console.log(params.get("compose"))
+  if ( params.has("compose") && params.get("compose") === "true" ) {
+    return <NewMessage />
+  } else {
+     return <Messages
+       messages={messages}
+    />
   }
-]
-
-const Inbox = () => {
-  return (
-    <DisplayWrapper header={false}>
-      <DashSubnav />
-      <section className="inbox-wrapper center">
-        <InboxMessageList data={messages}/>
-        <InboxChat data={messages[0]}/>
-      </section>
-    </DisplayWrapper>
-  );
 }
+
+const Messages = ({messages}) => (
+  <DisplayWrapper header={true}>
+    <DashSubnav />
+    <div className="inbox-header center d-f ai-c jc-sb">
+      <h1 className="ta-c title">Inbox</h1>
+      <Link to="/dashboard/inbox?compose=true">
+        <i className="fas fa-pen-fancy mr-"></i>
+        Compose
+      </Link>
+    </div>
+    <section className="inbox-wrapper center">
+      {messages && 
+        <React.Fragment>
+          <InboxMessageList data={messages}/>
+          <InboxChat data={messages[0]}/>
+        </React.Fragment>
+      }
+
+      {!messages &&
+        <div className="d-f fxd-c ai-c inbox-no-messages">
+          <i className="fas fa-envelope-open-text"></i>
+          <p className="ta-c subtitle">No messages! Click "compose" to begin a conversation!</p>
+        </div>
+      }
+    </section>
+  </DisplayWrapper>
+)
 
 export default Inbox;

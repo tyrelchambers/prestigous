@@ -1,3 +1,5 @@
+@import '../../colours.scss';
+
 .inbox-wrapper {
   padding: 1em;
   height: calc(100vh - 150px);
@@ -5,4 +7,17 @@
   display: flex;
   max-width: 1920px;
   width: 100%;
+}
+
+.inbox-header {
+  max-width: 1920px;
+  width: 100%;
+}
+
+.inbox-no-messages {
+  width: 100%;
+  i {
+    color: $grey5;
+    font-size: 4rem;
+  }
 }

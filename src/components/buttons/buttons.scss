@@ -1,15 +1,15 @@
 @import '../../colours';
 
 .btn {
+  display: block;
   min-width: 175px;
-  width: 100%;
+  width: auto;
   height: 52px;
   border-radius: 5px;
   font-size: 1rem;
   border: none;
   transition: all 0.1s ease;
   padding: 1em;
-  max-width: 216px;
 
 }
 

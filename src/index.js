@@ -24,6 +24,7 @@ import { getProfile, getCookieFromDb } from './api/users/profile';
 import ProfileStories from './pages/ProfileStories/ProfileStories';
 import { DraftsPage } from './pages/DraftsPage/DraftsPage';
 import { DiscoverPage } from './pages/DiscoverPage/DiscoverPage';
+import { getProfileWithAuth0 } from './api/get';
 
 const stores = {
   UserStore,
@@ -63,34 +64,37 @@ const PrivateRoute = ({ component: Component, path, ...rest }) => {
 
 const CallbackRoute = () => {
   const sessionCookie = Cookies.get("sid");
-  const { isAuthenticated, user } = useAuth0();
-
-  if ( sessionCookie && isAuthenticated ) {
-    (async() => {
-      const profile = await getProfile();
-      UserStore.setProfile(profile);
-    })();
-
-    window.location.href = "/";
-
-  }
+  const { isAuthenticated, user, loading } = useAuth0();
   
-  if ( !sessionCookie && isAuthenticated ) {
-    (async() => {
-      const cookie = await getCookieFromDb(user);
-      if ( cookie ) {
-        Cookies.set("sid", cookie, { expires: 1});
+  useEffect(() => {
+    if (loading) {
+      return;
+    }
+
+    const fn = async () => {
+      if (isAuthenticated) {
+        const p = await getProfileWithAuth0(user.sub).catch(err => {
+          if (err) {
+            window.location.href="/create_profile?r=writer";
+          }
+        });
+
+        if (!sessionCookie) {
+          const cookie = await getCookieFromDb(p.data);
+          
+          Cookies.set("sid", cookie, { expires: 1});
+          UserStore.setProfile(p);
+          window.location.href="/"
+        }
+
+        window.location.href="/";
+
       }
-    })();
-    window.location.href = "/";
-  }
+    }
 
-  if ( !sessionCookie && !isAuthenticated ) {
-
-    window.location.href = "/";
-
-  }
-
+    fn();
+  }, [loading])
+  
   return null;
 }
 

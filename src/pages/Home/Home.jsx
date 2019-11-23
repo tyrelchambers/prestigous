@@ -21,7 +21,7 @@ const narrator = {
 const story = {
   title: "This is a story that hopefully is just long enough yea yea yea",
   username: "imtyrelchambers",
-  likes: 100,
+  likedBy: ["100"],
   views: 800000,
   bannerUrl: "https://images.unsplash.com/photo-1487023269153-8ab6d0e24173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80"
 }
