@@ -37,7 +37,6 @@ export const Auth0Provider = observer(({
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
-        
         setUser(user);
       }
 

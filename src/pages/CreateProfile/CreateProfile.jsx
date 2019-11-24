@@ -49,7 +49,8 @@ const CreateProfile = inject("UserStore")(observer(({UserStore, location}) => {
     const payload = {
       ...credentials,
       ...user,
-      role: profileType[0]
+      role: profileType[0],
+      email: user.emai
     }
 
     Axios.post(`${process.env.REACT_APP_BACKEND_USERS}/api/profile/create`, payload)

@@ -16,8 +16,10 @@ export const getSingleStory = (storyId) => {
   return Axios.get(`${BACKEND}/api/story/id/${storyId}`);
 }
 
-export const getAllUsernames = () => {
-  return Axios.get(`${BACKEND}/api/profile/allUsernames`, {withCredentials: true});
+export const getAllUsernames = (user) => {
+  return Axios.get(`${BACKEND}/api/profile/allUsernames?user=${user}`, {
+    withCredentials: true
+  });
 }
 
 export const getProfileWithAuth0 = (id) => {

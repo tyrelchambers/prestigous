@@ -5,20 +5,26 @@ import { NewMessageForm } from '../forms/NewMessageForm'
 import { sendMessage } from '../../api/post'
 import { useAuth0 } from '../../react-auth0-wrapper'
 import { getAllUsernames } from '../../api/get'
+import './NewMessage.scss';
 
 export const NewMessage = () => {
   const [ state, setState ] = useState({
     to: "",
     message: ""
   });
+  const [ profiles, setProfiles ] = useState([]);
+  const { profile } = useAuth0();
 
   useEffect(() => {
-    if ( state.to.length > 3 ) {
+    if ( state.to.length > 2 ) {
       getProfiles();
+    }
+
+    if ( state.to.length <= 2) {
+      setProfiles([]);
     }
   }, [state.to]);
 
-  const { profile } = useAuth0();
 
   const sendHandler = async (e) => {
     e.preventDefault();
@@ -31,8 +37,12 @@ export const NewMessage = () => {
   }
 
   const getProfiles = async () => {
-    const data = await getAllUsernames();
-    console.log(data.data)
+    const data = await getAllUsernames(state.to);
+    setProfiles([...data.data]);
+  }
+
+  const clickHandler = (username) => {
+    setState({...state, to: username});
   }
 
   return (
@@ -45,6 +55,8 @@ export const NewMessage = () => {
           sendHandler={sendHandler}
           state={state}
           stateHandler={stateHandler}
+          autocomplete={profiles}
+          clickHandler={clickHandler}
         />
       </section>
     </DisplayWrapper>

@@ -4,10 +4,10 @@ import { MainInput } from '../inputs/Inputs'
 import '../inputs/inputs.scss';
 import { SubmitButton } from '../buttons/Buttons';
 
-export const NewMessageForm = ({sendHandler, state, stateHandler}) => {
+export const NewMessageForm = ({sendHandler, state, stateHandler, autocomplete, clickHandler}) => {
   return (
     <FormWrapper>
-      <div className="field-group">
+      <div className="field-group pos-r">
         <label htmlFor="to" className="form-label">To:</label>
         <MainInput
           placeholder="username"
@@ -16,6 +16,17 @@ export const NewMessageForm = ({sendHandler, state, stateHandler}) => {
           onChange={stateHandler}
           value={state.to}
         />
+
+        {autocomplete.length > 0 &&
+          <div className="autocomplete-wrapper">
+            {autocomplete.map((x, id) => (
+              <div key={id} className="d-f" onClick={() => clickHandler(x.email)}>
+                <p className="autocomplete-title mr-">{x.username}</p>
+                <p className="autocomplete-subtitle">{x.email}</p>
+              </div>
+            ))}
+          </div>
+        }
       </div>
 
       <div className="field-group">
