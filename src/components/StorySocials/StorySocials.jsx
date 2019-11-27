@@ -1,17 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './StorySocials.scss';
 import { likeStory, dislikeStory } from '../../api/patch';
 
 export const StorySocials = ({story, profile}) => {
-  const [ liked, setLiked ] = useState(story.likedBy.includes(profile._id));
+  const [ liked, setLiked ] = useState();
+
+  useEffect(() => {
+    if ( profile ) {
+      setLiked(story.likedBy.includes(profile._id))
+    }
+  }, [liked]);
 
   return (
     <div className="story-socials-wrapper d-f ai-c mt+">
-      <Heart 
-        story={story}
-        liked={liked}
-        setLiked={setLiked}
-      />
+      {profile &&
+        <Heart 
+          story={story}
+          liked={liked}
+          setLiked={setLiked}
+        />
+      }
 
       <div className="d-f fxd-c jc-c ai-c social-item">
         <i className="fab fa-twitter"></i>

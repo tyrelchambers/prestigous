@@ -4,8 +4,7 @@ import UserWidget from '../UserWidget/UserWidget';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import { StorySocials } from '../StorySocials/StorySocials';
 
-const Story = ({story}) => {
-  const { user, profile } = useAuth0();
+const Story = ({story, profile, user}) => {
 
   if ( !story ) return null;
 
@@ -48,19 +47,24 @@ const Story = ({story}) => {
             <p className="subtitle">{story.views} views</p>
           </div>
         </div>
-        <div className="mt- mb-">
-          <h3 className="subtitle thin m0">Tags</h3>
-          <ul className="story-meta">
-            {tags}
-          </ul>
-        </div>
+        
+        {story.tags &&
+          <div className="mt- mb-">
+            <h3 className="subtitle thin m0">Tags</h3>
+            <ul className="story-meta">
+              {tags}
+            </ul>
+          </div>
+        }
 
-        <div className="mt- mb-">
-          <h3 className="subtitle thin m0">Genre</h3>
-          <ul className="story-meta">
-            {genre}
-          </ul>
-        </div>
+        {story.genre &&
+          <div className="mt- mb-">
+            <h3 className="subtitle thin m0">Genre</h3>
+            <ul className="story-meta">
+              {genre}
+            </ul>
+          </div>
+        }
         
        {story.notes &&
         <React.Fragment>

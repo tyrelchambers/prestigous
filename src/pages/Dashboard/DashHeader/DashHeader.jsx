@@ -15,7 +15,7 @@ const DashHeader = () => {
 
   return (
     <div className="dashboard-header center mt+">
-      <img src={user.picture} alt="" className="avatar"/>  
+      <img src={u.picture} alt="" className="avatar"/>  
 
       <h2 className="dashboard-title mb-">imtyrelchambers</h2>    
       <p className="dashboard-subtitle ">Tyrel Chambers</p>

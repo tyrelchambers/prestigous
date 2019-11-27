@@ -6,6 +6,7 @@ import { sendMessage } from '../../api/post'
 import { useAuth0 } from '../../react-auth0-wrapper'
 import { getAllUsernames } from '../../api/get'
 import './NewMessage.scss';
+import { socket, emitToAll } from '../../libs/socketIOConfig'
 
 export const NewMessage = () => {
   const [ state, setState ] = useState({
@@ -23,6 +24,8 @@ export const NewMessage = () => {
     if ( state.to.length <= 2) {
       setProfiles([]);
     }
+
+    //emitToAll();
   }, [state.to]);
 
 

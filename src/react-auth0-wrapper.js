@@ -4,6 +4,7 @@ import { getProfile, getCookieFromDb } from "./api/users/profile";
 import { observer } from "mobx-react";
 import UserStore from "./stores/UserStore";
 import Cookies from 'js-cookie';
+import { getProfileWithAuth0 } from "./api/get";
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -37,7 +38,11 @@ export const Auth0Provider = observer(({
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
+        const profile = await getProfileWithAuth0(user.sub);
+        const cookie = await getCookieFromDb(profile.data);
+        setProfile(profile);
         setUser(user);
+        Cookies.set("sid", cookie, { expires: 1});
       }
 
       setLoading(false);
